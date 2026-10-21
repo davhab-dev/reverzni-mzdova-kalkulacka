@@ -42,7 +42,7 @@ label{display:block;font-weight:650;font-size:14px;margin:16px 0 7px}
 .check small{display:block;color:var(--muted);font-size:12px;font-weight:400;margin-top:2px}
 .result{background:linear-gradient(135deg,#103675,#2563b8 72%,#477fc8);border:0;border-radius:18px;padding:22px;margin-top:20px;box-shadow:0 8px 22px #174ea626;color:#fff}
 .result .caption{font-size:14px;color:#e0ebff;font-weight:750;letter-spacing:.01em}
-.result .amount{font-size:clamp(30px,7vw,36px);line-height:1.2;letter-spacing:-.025em;font-weight:800;color:#fff;margin:8px 0 0;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.result .amount{font-size:clamp(26px,6vw,32px);line-height:1.2;letter-spacing:-.02em;font-weight:800;color:#fff;margin:8px 0 0;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
 .result .sub{font-size:13px;color:#e0ebff;margin-top:8px;padding-top:9px;border-top:1px solid #ffffff40}
 .rows{margin-top:20px}
 .breakdown-heading{font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:800;color:var(--blue);padding:13px 0 5px;border-bottom:1px solid var(--line)}
@@ -147,7 +147,7 @@ button:focus-visible,input:focus-visible{outline:3px solid #4b83d0;outline-offse
   else{c=calc(amount,o);$('amountLabel').textContent='Hrubá měsíční mzda';$('resultLabel').textContent='Čistá měsíční mzda';$('resultAmount').textContent=fmt(c.net);$('resultSub').textContent='Hrubá mzda: '+fmt(c.gross);}
   $('breakdown').innerHTML=heading('Základ výpočtu')+row('Hrubá mzda',fmt(c.gross))+row('Základ daně po zaokrouhlení',fmt(c.taxBase))+heading('Povinné odvody')+row('Sociální pojištění (7,1 %)','− '+fmt(c.social))+row('Zdravotní pojištění (4,5 %)','− '+fmt(c.health))+heading('Daň a slevy')+row('Daň před slevami (15 % / 23 %)',fmt(c.taxBeforeCredit))+row('Sleva na poplatníka','− '+fmt(c.taxpayerCredit))+row('Sleva na invaliditu','− '+fmt(c.invalidityCredit))+row('Sleva ZTP/P','− '+fmt(c.ztppCredit))+row('Zvýhodnění na děti','− '+fmt(c.childrenCredit))+row('Daň po slevách','− '+fmt(c.tax))+row('Daňový bonus na děti',c.taxBonus?'+ '+fmt(c.taxBonus):fmt(0))+heading('Výsledek')+row('Čistá mzda',fmt(c.net),'total')+(o.children&&!c.bonusEligible?'<p class="hint">Daňový bonus na děti nebyl započten, protože hrubý příjem nedosahuje orientační hranice 11 200 Kč měsíčně.</p>':'');
  }
- function setMode(next){mode=next;$('netTab').classList.toggle('active',mode==='net');$('grossTab').classList.toggle('active',mode==='gross');$('netTab').setAttribute('aria-selected',mode==='net');$('grossTab').setAttribute('aria-selected',mode==='gross');$('amount').value=mode==='net'?40000:50996;render();}
+ function setMode(next){mode=next;$('netTab').classList.toggle('active',mode==='net');$('grossTab').classList.toggle('active',mode==='gross');$('netTab').setAttribute('aria-selected',mode==='net');$('grossTab').setAttribute('aria-selected',mode==='gross');$('amount').value=mode==='net'?30000:50996;render();}
  $('netTab').addEventListener('click',()=>setMode('net'));$('grossTab').addEventListener('click',()=>setMode('gross'));$('amount').addEventListener('input',render);['taxCredit','children','invalidity','ztpp'].forEach(id=>$(id).addEventListener('change',render));render();
  async function updateStatus(){
   const box=$('dataStatus');try{
