@@ -109,7 +109,7 @@ button:focus-visible,input:focus-visible{outline:3px solid #4b83d0;outline-offse
 </div>
 <label class="check"><input id="ztpp" type="checkbox"><span><span class="check-title">Jsem držitelem průkazu ZTP/P</span><span class="check-help">Dodatečná sleva 1 345 Kč měsíčně při splnění zákonných podmínek.</span></span></label>
 </div>
-<p class="hint">Výsledek je orientační. Uplatnění slev závisí na splnění zákonných podmínek a doložení zaměstnavateli. Daňový bonus na děti závisí také na dosaženém příjmu.</p>
+<p class="hint">Výsledek je orientační. Uplatnění slev závisí na splnění zákonných podmínek a doložení zaměstnavateli. Měsíční bonus na děti se vyplácí nejméně ve výši 50 Kč a při příjmu alespoň 11 200 Kč.</p><p class="hint">U hrubé mzdy pod 22 400 Kč kalkulačka nezohledňuje případný doplatek zdravotního pojištění do minimálního vyměřovacího základu. Výjimky závisí na konkrétní situaci zaměstnance.</p>
 </div>
 <div class="result" aria-live="polite">
 <div class="caption" id="resultLabel">Potřebná hrubá měsíční mzda</div><div class="amount" id="resultAmount">50 996 Kč</div><div class="sub" id="resultSub">Čistá mzda po zákonných odvodech a dani</div>
@@ -131,7 +131,7 @@ button:focus-visible,input:focus-visible{outline:3px solid #4b83d0;outline-offse
   const taxBeforeCredit=Math.ceil(Math.min(taxBase,threshold)*.15+Math.max(0,taxBase-threshold)*.23);
   const taxpayerCredit=options.credit?2570:0,invalidityCredit=Number(options.invalidity||0),ztppCredit=options.ztpp?1345:0;
   const taxAfterDiscounts=Math.max(0,taxBeforeCredit-taxpayerCredit-invalidityCredit-ztppCredit),childrenCredit=childCredit(options.children);
-  const bonusEligible=gross>=11200,tax=Math.max(0,taxAfterDiscounts-childrenCredit),taxBonus=bonusEligible?Math.max(0,childrenCredit-taxAfterDiscounts):0;
+  const bonusEligible=gross>=11200,tax=Math.max(0,taxAfterDiscounts-childrenCredit),potentialBonus=Math.max(0,childrenCredit-taxAfterDiscounts),taxBonus=bonusEligible&&potentialBonus>=50?potentialBonus:0;
   return {gross,social,health,taxBase,taxBeforeCredit,taxpayerCredit:Math.min(taxBeforeCredit,taxpayerCredit),invalidityCredit:Math.min(Math.max(0,taxBeforeCredit-taxpayerCredit),invalidityCredit),ztppCredit:Math.min(Math.max(0,taxBeforeCredit-taxpayerCredit-invalidityCredit),ztppCredit),childrenCredit,tax,taxBonus,net:gross-social-health-tax+taxBonus,bonusEligible};
  }
  function options(){return {credit:$('taxCredit').checked,children:Number($('children').value),invalidity:Number($('invalidity').value),ztpp:$('ztpp').checked};}
