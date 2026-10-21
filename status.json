@@ -1,5 +1,10 @@
 {
   "status": "unknown",
-  "checked_at": null,
-  "parameter_year": 2026
+  "checked_at": "2026-10-21T09:30:53Z",
+  "parameter_year": 2026,
+  "check_type": "official_page_content_change_detection",
+  "message": "Zdroje byly technicky zkontrolovány, ale mzdové parametry kalkulačky zatím nebyly potvrzeny.",
+  "changed_sources": [],
+  "errors": [],
+  "review_required": true
 }
