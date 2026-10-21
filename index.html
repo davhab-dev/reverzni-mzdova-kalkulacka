@@ -26,8 +26,15 @@ label{display:block;font-weight:650;font-size:14px;margin:16px 0 7px}
 .hint{font-size:12px;color:var(--muted);margin-top:6px}
 .check{display:flex;align-items:flex-start;gap:10px;font-size:14px;margin-top:15px}
 .check input{width:18px;height:18px;margin-top:2px;accent-color:var(--blue)}
-.options{border-top:1px solid var(--line);margin-top:18px;padding-top:4px}
-.options-title{font-weight:750;margin:14px 0 0;color:var(--blue)}
+.options{border-top:1px solid var(--line);margin-top:20px;padding-top:8px}
+.options-title{font-weight:800;font-size:17px;margin:12px 0 4px;color:var(--ink)}
+.options-intro{font-size:13px;color:var(--muted);margin:0 0 14px}
+.option-group{border:1px solid var(--line);border-radius:13px;padding:13px;margin:12px 0;background:#fbfdff}
+.option-group-title{font-size:12px;text-transform:uppercase;letter-spacing:.06em;font-weight:800;color:var(--blue);margin:0 0 7px}
+.option-help{font-size:12px;line-height:1.45;color:var(--muted);margin:5px 0 0}
+.check span{line-height:1.4}
+.check .check-title{display:block;font-weight:700}
+.check .check-help{display:block;color:var(--muted);font-size:12px;font-weight:400;margin-top:3px}
 .select-wrap{margin-top:14px}
 .select-wrap label{margin:0 0 7px}
 .select-wrap select{width:100%;padding:12px;border:1px solid #b8c9e2;border-radius:10px;background:var(--white);color:var(--ink);font:inherit}
@@ -53,7 +60,7 @@ label{display:block;font-weight:650;font-size:14px;margin:16px 0 7px}
 @media (prefers-color-scheme:dark){.update-button{background:#1d3557;color:#c8dcff;border-color:#45658e}.update-button:hover{background:#28466f}}
 footer{text-align:center;font-size:11px;color:var(--muted);padding:16px 4px;border-top:1px solid var(--line);margin-top:12px}
 button:focus-visible,input:focus-visible{outline:3px solid #4b83d0;outline-offset:2px}
-@media (prefers-color-scheme:dark){:root{color-scheme:dark;--ink:#e8efff;--muted:#aab9d2;--blue:#79adff;--blue-dark:#b5d1ff;--paper:#101a2a;--line:#2b3c57;--white:#17243a}header{background:linear-gradient(135deg,#10264a,#174ea6 68%,#235d9f);color:#fff;border-bottom-color:#79adff}header p{color:#dbe8ff}.card{box-shadow:0 4px 16px #00000018}.tabs{background:#202f47}.tabs button.active{background:#245aa8;color:#fff}.money{background:#17243a;border-color:#425776}.money input{background:transparent;color:#f2f6ff}.money span{color:#9fc4ff}.select-wrap select{background:#17243a;border-color:#425776;color:var(--ink)}.result{background:linear-gradient(135deg,#103675,#174ea6 72%,#235d9f);border-color:#3b5f91;box-shadow:0 8px 22px #00000030}.result .caption{color:#e0ebff}.result .amount{color:#fff}.result .sub{color:#e0ebff}.breakdown-heading{color:#9fc4ff}.line.total{background:#1d3557;border-color:#45658e}.line.total strong{color:#d7e6ff}.line strong{color:#c8dcff}.line:nth-child(2) strong,.line:nth-child(3) strong{color:#8bb8f4}.options-title,.section-title{color:#9fc4ff}footer{border-color:var(--line)}.check-status{background:#172b45;border-color:#425776;color:#dbe8ff}.check-status p{color:#aab9d2}.check-status[data-state="verified"]{background:#183329;border-color:#35684c;color:#b9e6c9}.check-status[data-state="new"]{background:#3a3020;border-color:#6b5830;color:#f0d99c}.check-status[data-state="unknown"]{background:#172b45;border-color:#425776;color:#dbe8ff}}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--ink:#e8efff;--muted:#aab9d2;--blue:#79adff;--blue-dark:#b5d1ff;--paper:#101a2a;--line:#2b3c57;--white:#17243a}header{background:linear-gradient(135deg,#10264a,#174ea6 68%,#235d9f);color:#fff;border-bottom-color:#79adff}header p{color:#dbe8ff}.card{box-shadow:0 4px 16px #00000018}.tabs{background:#202f47}.tabs button.active{background:#245aa8;color:#fff}.money{background:#17243a;border-color:#425776}.money input{background:transparent;color:#f2f6ff}.money span{color:#9fc4ff}.select-wrap select{background:#17243a;border-color:#425776;color:var(--ink)}.result{background:linear-gradient(135deg,#103675,#174ea6 72%,#235d9f);border-color:#3b5f91;box-shadow:0 8px 22px #00000030}.result .caption{color:#e0ebff}.result .amount{color:#fff}.result .sub{color:#e0ebff}.breakdown-heading{color:#9fc4ff}.line.total{background:#1d3557;border-color:#45658e}.line.total strong{color:#d7e6ff}.line strong{color:#c8dcff}.line:nth-child(2) strong,.line:nth-child(3) strong{color:#8bb8f4}.options-title,.section-title{color:#e8efff}.option-group{background:#142239;border-color:#354a69}.option-group-title{color:#9fc4ff}.option-help{color:#aab9d2}.check .check-help{color:#aab9d2}footer{border-color:var(--line)}.check-status{background:#172b45;border-color:#425776;color:#dbe8ff}.check-status p{color:#aab9d2}.check-status[data-state="verified"]{background:#183329;border-color:#35684c;color:#b9e6c9}.check-status[data-state="new"]{background:#3a3020;border-color:#6b5830;color:#f0d99c}.check-status[data-state="unknown"]{background:#172b45;border-color:#425776;color:#dbe8ff}}
 </style>
 </head>
 <body>
@@ -79,22 +86,33 @@ button:focus-visible,input:focus-visible{outline:3px solid #4b83d0;outline-offse
 <label id="amountLabel" for="amount">Požadovaná čistá měsíční mzda</label>
 <div class="money"><input id="amount" type="number" inputmode="numeric" min="0" step="100" value="40000" aria-describedby="amountHint"><span>Kč</span></div>
 <div class="hint" id="amountHint">Zadejte částku v českých korunách.</div>
-<label class="check"><input id="taxCredit" type="checkbox" checked><span>Uplatňuji základní měsíční slevu na poplatníka (2 570 Kč)</span></label>
 <div class="options">
-<p class="options-title">Další daňové slevy a zvýhodnění</p>
+<p class="options-title">Nastavení daňových slev</p>
+<p class="options-intro">Zaškrtněte pouze slevy a zvýhodnění, na které máte nárok a které uplatňujete při výpočtu měsíční mzdy.</p>
+<div class="option-group">
+<p class="option-group-title">Základní sleva</p>
+<label class="check"><input id="taxCredit" type="checkbox" checked><span><span class="check-title">Sleva na poplatníka</span><span class="check-help">2 570 Kč měsíčně. Obvykle ji uplatňujete podpisem prohlášení poplatníka u zaměstnavatele.</span></span></label>
+</div>
+<div class="option-group">
+<p class="option-group-title">Děti</p>
 <div class="select-wrap">
-<label for="children">Počet vyživovaných dětí uplatňovaných měsíčně</label>
+<label for="children">Počet dětí, na které uplatňujete daňové zvýhodnění</label>
 <select id="children">
-<option value="0">Neuplatňuji žádné dítě</option><option value="1">1 dítě</option><option value="2">2 děti</option><option value="3">3 děti</option><option value="4">4 děti</option><option value="5">5 dětí</option>
+<option value="0">Žádné dítě</option><option value="1">1 dítě</option><option value="2">2 děti</option><option value="3">3 děti</option><option value="4">4 děti</option><option value="5">5 dětí</option>
 </select>
-<div class="hint">Orientačně: 1. dítě 1 267 Kč, 2. dítě 1 860 Kč, 3. a každé další dítě 2 320 Kč měsíčně. Uplatnit může jen jeden z rodičů.</div>
+<p class="option-help">Zvýhodnění se liší podle pořadí dítěte. Na stejné dítě je za daný měsíc uplatňuje pouze jeden z rodičů. Kalkulačka nyní předpokládá, že žádné z dětí nemá průkaz ZTP/P.</p>
 </div>
+</div>
+<div class="option-group">
+<p class="option-group-title">Zdravotní postižení</p>
 <div class="select-wrap">
-<label for="invalidity">Sleva na invaliditu</label>
-<select id="invalidity"><option value="0">Neuplatňuji</option><option value="210">Invalidita I. nebo II. stupně (210 Kč/měs.)</option><option value="420">Invalidita III. stupně (420 Kč/měs.)</option></select>
+<label for="invalidity">Vlastní invalidita</label>
+<select id="invalidity"><option value="0">Bez této slevy</option><option value="210">Invalidita I. nebo II. stupně — 210 Kč/měs.</option><option value="420">Invalidita III. stupně — 420 Kč/měs.</option></select>
+<p class="option-help">Vyberte stupeň invalidity, pokud splňujete podmínky pro uplatnění slevy.</p>
 </div>
-<label class="check"><input id="ztpp" type="checkbox"><span>Sleva na držitele průkazu ZTP/P (1 345 Kč/měs.)</span></label>
-<p class="hint">Slevy lze zohlednit při splnění zákonných podmínek a řádném doložení zaměstnavateli. Daňový bonus na děti závisí také na dosaženém příjmu.</p>
+<label class="check"><input id="ztpp" type="checkbox"><span><span class="check-title">Jsem držitelem průkazu ZTP/P</span><span class="check-help">Dodatečná sleva 1 345 Kč měsíčně při splnění zákonných podmínek.</span></span></label>
+</div>
+<p class="hint">Výsledek je orientační. Uplatnění slev závisí na splnění zákonných podmínek a doložení zaměstnavateli. Daňový bonus na děti závisí také na dosaženém příjmu.</p>
 </div>
 <div class="result" aria-live="polite">
 <div class="caption" id="resultLabel">Potřebná hrubá měsíční mzda</div><div class="amount" id="resultAmount">50 996 Kč</div><div class="sub" id="resultSub">Čistá mzda po zákonných odvodech a dani</div>
