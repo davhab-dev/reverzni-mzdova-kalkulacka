@@ -125,7 +125,7 @@ button:focus-visible,input:focus-visible{outline:3px solid #4b83d0;outline-offse
    const status=await response.json();
    const labels={
     verified:['✓','Mzdové parametry jsou aktuální','Sazby odvodů, daně a daňové slevy byly ověřeny.'],
-    new:['!','Byly zjištěny nové mzdové parametry','Změny je potřeba ověřit a případně promítnout do kalkulačky.'],
+    new:['!','Byly zjištěny možné změny mzdových parametrů','Na oficiálním zdroji se změnil obsah. Je potřeba ověřit, zda to ovlivňuje sazby, daně nebo slevy.'],
     unknown:['ⓘ','Aktuálnost mzdových parametrů nebyla ověřena','Nelze potvrdit, zda kalkulačka používá nejnovější platná pravidla.']
    };
    const s=labels[status.status] ? status.status : 'unknown',v=labels[s];
