@@ -135,7 +135,7 @@ button:focus-visible,input:focus-visible{outline:3px solid #4b83d0;outline-offse
   return {gross,social,health,taxBase,taxBeforeCredit,taxpayerCredit:Math.min(taxBeforeCredit,taxpayerCredit),invalidityCredit:Math.min(Math.max(0,taxBeforeCredit-taxpayerCredit),invalidityCredit),ztppCredit:Math.min(Math.max(0,taxBeforeCredit-taxpayerCredit-invalidityCredit),ztppCredit),childrenCredit,tax,taxBonus,net:gross-social-health-tax+taxBonus,bonusEligible};
  }
  function options(){return {credit:$('taxCredit').checked,children:Number($('children').value),invalidity:Number($('invalidity').value),ztpp:$('ztpp').checked};}
- function reverse(net,o){let lo=0,hi=Math.max(100000,net*2+10000);while(lo<hi){const mid=Math.floor((lo+hi)/2);if(calc(mid,o).net>=net)hi=mid;else lo=mid+1;}return calc(lo,o);}
+ function reverse(net,o){if(net<=0)return calc(0,o);let lo=0,hi=Math.ceil(Math.max(100000,net*2+10000)/100);while(lo<hi){const mid=Math.floor((lo+hi)/2);if(calc(mid*100,o).net>=net)hi=mid;else lo=mid+1;}const end=lo*100,start=Math.max(0,end-200);for(let gross=start;gross<=end;gross++){const c=calc(gross,o);if(c.net>=net)return c;}return calc(end,o);}
  function row(label,value,extraClass){return '<div class="line '+(extraClass||'')+'"><span>'+label+'</span><strong>'+value+'</strong></div>';}
  function heading(label){return '<div class="breakdown-heading">'+label+'</div>';}
  function render(){
