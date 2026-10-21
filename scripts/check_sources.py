@@ -21,8 +21,8 @@ SNAPSHOT_PATH = ROOT / "source_snapshot.json"
 
 SOURCES = {
     "financni_sprava": "https://financnisprava.gov.cz/cs/dane/dane/dan-z-prijmu/zamestnanci-zamestnavatele/obecne-informace",
-    "cssz": "https://www.cssz.cz/web/cz/pojistne-na-socialni-zabezpeceni",
-    "vzp": "https://www.vzp.cz/platci/informace/pojistne/pojistne-zamestnancu",
+    "cssz": "https://www.cssz.cz/legislativa-pojistne-na-socialni-zabezpeceni",
+    "vzp": "https://www.vzp.cz/platci/informace/zamestnavatel/vymerovaci-zaklad-a-vypocet-pojistneho",
 }
 
 class VisibleText(HTMLParser):
