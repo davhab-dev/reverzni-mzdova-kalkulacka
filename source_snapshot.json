@@ -1,20 +1,20 @@
 {
-  "checked_at": "2026-10-21T09:30:53Z",
+  "checked_at": "2026-10-21T15:08:47Z",
   "sources": {
     "financni_sprava": {
       "url": "https://financnisprava.gov.cz/cs/dane/dane/dan-z-prijmu/zamestnanci-zamestnavatele/obecne-informace",
       "sha256": "cf59815ca5bbc2287004a4b3fd690d3ad93996b900ddbfee2ba0f3ae65557524",
-      "checked_at": "2026-10-21T09:30:53Z"
+      "checked_at": "2026-10-21T15:08:47Z"
     },
     "cssz": {
       "url": "https://www.cssz.cz/legislativa-pojistne-na-socialni-zabezpeceni",
       "sha256": "accc4838e5933b49ea9320d5616e8c6aadab89ee1fe586fd74b14ee420dbfd8b",
-      "checked_at": "2026-10-21T09:30:53Z"
+      "checked_at": "2026-10-21T15:08:47Z"
     },
     "vzp": {
       "url": "https://www.vzp.cz/platci/informace/zamestnavatel/vymerovaci-zaklad-a-vypocet-pojistneho",
       "sha256": "f9bbe31fc8f1d196fb067519fbbbba86420d2625bcee2d46eb1abe1c99c8b7ad",
-      "checked_at": "2026-10-21T09:30:53Z"
+      "checked_at": "2026-10-21T15:08:47Z"
     }
   }
 }
