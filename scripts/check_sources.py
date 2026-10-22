@@ -35,7 +35,7 @@ class VisibleText(HTMLParser):
             self.hidden -= 1
     def handle_data(self, data):
         if not self.hidden:
-            value = re.sub(r"\\s+", " ", data).strip()
+            value = re.sub(r"\s+", " ", data).strip()
             if value:
                 self.parts.append(value)
 
@@ -51,7 +51,7 @@ def fetch_text(url):
         charset = response.headers.get_content_charset() or "utf-8"
     parser = VisibleText()
     parser.feed(raw.decode(charset, errors="replace"))
-    text = re.sub(r"\\s+", " ", " ".join(parser.parts)).strip()
+    text = re.sub(r"\s+", " ", " ".join(parser.parts)).strip()
     if len(text) < 200:
         raise RuntimeError("Zdroj vrátil nečekaně málo čitelného textu")
     return text
