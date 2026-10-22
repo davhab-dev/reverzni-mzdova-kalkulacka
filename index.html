@@ -206,7 +206,10 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid 
    const checked=$('statusCheckedAt');
    if(checked){
     const dateText=validDate?checkedAt.toLocaleString('cs-CZ',{dateStyle:'medium',timeStyle:'short',timeZone:'Europe/Prague'}):'datum neuvedeno';
-    checked.textContent='Poslední technická kontrola: '+dateText+' · rok parametrů: '+(status.parameter_year||'neuveden')+'. Kontrola obsahu zdrojů není potvrzením správnosti sazeb.';
+    let detail='Poslední kontrola zdrojů: '+dateText+' · rok parametrů: '+(status.parameter_year||'neuveden')+'.';
+    if(status.review_required && Array.isArray(status.failed_parameters) && status.failed_parameters.length){detail+=' Vyžadují kontrolu: '+status.failed_parameters.join('; ')+'.';}
+    if(status.automatic_parameter_updates===false){detail+=' Automatická změna zákonných sazeb je vypnutá, aby se nepoužila neověřená hodnota.';}
+    checked.textContent=detail;
    }
   }catch(e){box.dataset.state='unknown';box.querySelector('.status-icon').textContent='ⓘ';box.querySelector('strong').textContent='Aktuálnost mzdových parametrů nebyla ověřena';box.querySelector('p').textContent='Nelze potvrdit, zda kalkulačka používá nejnovější platná pravidla.';const checked=$('statusCheckedAt');if(checked)checked.textContent='Datum poslední technické kontroly není dostupné.';}
  }
