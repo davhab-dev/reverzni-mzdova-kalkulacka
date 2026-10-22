@@ -32,7 +32,7 @@ label{display:block;font-weight:650;font-size:14px;margin:16px 0 7px}
 .options-intro{font-size:13px;color:var(--muted);margin:0 0 14px}
 .option-group{border:1px solid var(--line);border-radius:13px;padding:13px;margin:12px 0;background:#fbfdff}
 .option-group-title{font-size:12px;text-transform:uppercase;letter-spacing:.06em;font-weight:800;color:var(--blue);margin:0 0 7px}
-.option-help{font-size:12px;line-height:1.45;color:var(--muted);margin:5px 0 0}
+.option-help{font-size:12px;line-height:1.45;color:var(--muted);margin:5px 0 0}.advanced-options{border:1px solid var(--line);border-radius:13px;padding:0 13px;margin:12px 0;background:#fbfdff}.advanced-options summary{cursor:pointer;list-style:none;padding:13px 0;font-size:14px;font-weight:750;color:var(--blue-dark)}.advanced-options summary::-webkit-details-marker{display:none}.advanced-options summary:after{content:"＋";float:right;color:var(--blue)}.advanced-options[open] summary:after{content:"−"}.advanced-options summary:focus-visible{outline:3px solid #4b83d0;outline-offset:3px}.advanced-options .option-group-title{margin-top:0}
 .check span{line-height:1.4}
 .check .check-title{display:block;font-weight:700}
 .check .check-help{display:block;color:var(--muted);font-size:12px;font-weight:400;margin-top:3px}
@@ -45,7 +45,7 @@ label{display:block;font-weight:650;font-size:14px;margin:16px 0 7px}
 .result .caption{font-size:14px;color:#e0ebff;font-weight:750;letter-spacing:.01em}
 .result .amount{font-size:clamp(26px,6vw,32px);line-height:1.2;letter-spacing:-.02em;font-weight:800;color:#fff;margin:8px 0 0;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
 .result .sub{font-size:13px;color:#e0ebff;margin-top:8px;padding-top:9px;border-top:1px solid #ffffff40}
-.rows{margin-top:20px}
+.rows{margin-top:12px}.breakdown-details{border:1px solid var(--line);border-radius:12px;background:var(--white);margin-top:12px;overflow:hidden}.breakdown-details summary{cursor:pointer;list-style:none;padding:13px 15px;font-weight:750;color:var(--blue-dark);font-size:14px}.breakdown-details summary::-webkit-details-marker{display:none}.breakdown-details summary:after{content:"＋";float:right;color:var(--blue);font-size:16px}.breakdown-details[open] summary:after{content:"−"}.breakdown-details summary:focus-visible{outline:3px solid #4b83d0;outline-offset:-3px}.breakdown-details .rows{padding:0 15px 12px;margin-top:0}
 .breakdown-heading{font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:800;color:var(--blue);padding:13px 0 5px;border-bottom:1px solid var(--line)}
 .line{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}
 .line:last-child{border-bottom:0}.line strong{text-align:right;font-variant-numeric:tabular-nums;color:var(--blue-dark);white-space:nowrap}
@@ -54,10 +54,10 @@ label{display:block;font-weight:650;font-size:14px;margin:16px 0 7px}
 .section-title{font-weight:750;margin:0 0 4px;color:var(--blue)}
 .note{font-size:12px;color:var(--muted);line-height:1.5}
 .check-status{display:flex;align-items:flex-start;gap:9px;padding:12px;border:1px solid #c7d8ee;background:#f7faff;border-radius:12px;color:#31547f;font-size:12px;margin:0 0 14px}.check-status .status-icon{font-size:15px;line-height:1.35;flex:0 0 auto}.check-status .status-copy{flex:1;min-width:0}.check-status strong{display:block;font-size:12px;margin-bottom:2px}.check-status p{margin:0;color:#61718a}.check-status[data-state="verified"]{border-color:#b7d9c4;background:#f4fbf6;color:#23633d}.check-status[data-state="new"]{border-color:#e6d4a4;background:#fffaf0;color:#765515}.check-status[data-state="unknown"]{border-color:#c7d8ee;background:#f7faff;color:#31547f}
-.check-status .next-check{display:flex;align-items:flex-start;gap:7px;border-top:1px solid currentColor;opacity:.88;margin-top:9px;padding-top:8px;font-size:11px;line-height:1.4}
+.check-status .next-check{display:flex;align-items:flex-start;gap:7px;border-top:1px solid #c7d8ee;margin-top:9px;padding-top:8px;font-size:11px;line-height:1.4;color:#61718a}.check-status[data-state="verified"] .next-check{border-color:#b7d9c4;color:#23633d}.check-status[data-state="new"] .next-check{border-color:#e6d4a4;color:#765515}
 footer{text-align:center;font-size:11px;color:var(--muted);padding:16px 4px;border-top:1px solid var(--line);margin-top:12px}
-button:focus-visible,input:focus-visible{outline:3px solid #4b83d0;outline-offset:2px}
-@media (prefers-color-scheme:dark){:root{color-scheme:dark;--ink:#e8efff;--muted:#aab9d2;--blue:#79adff;--blue-dark:#b5d1ff;--paper:#101a2a;--line:#2b3c57;--white:#17243a}header{background:linear-gradient(135deg,#10264a,#174ea6 68%,#235d9f);color:#fff;border-bottom-color:#79adff}header p{color:#dbe8ff}.card{box-shadow:0 4px 16px #00000018}.tabs{background:#202f47}.tabs button.active{background:#245aa8;color:#fff}.money{background:#17243a;border-color:#425776}.money input{background:transparent;color:#f2f6ff}.money span{color:#9fc4ff}.select-wrap select{background:#17243a;border-color:#425776;color:var(--ink)}.result{background:linear-gradient(135deg,#103675,#174ea6 72%,#235d9f);border-color:#3b5f91;box-shadow:0 8px 22px #00000030}.result .caption{color:#e0ebff}.result .amount{color:#fff}.result .sub{color:#e0ebff}.breakdown-heading{color:#9fc4ff}.line.total{background:#1d3557;border-color:#45658e}.line.total strong{color:#d7e6ff}.line strong{color:#c8dcff}.line:nth-child(2) strong,.line:nth-child(3) strong{color:#8bb8f4}.options-title,.section-title{color:#e8efff}.option-group{background:#142239;border-color:#354a69}.option-group-title{color:#9fc4ff}.option-help{color:#aab9d2}.check .check-help{color:#aab9d2}footer{border-color:var(--line)}.check-status{background:#172b45;border-color:#425776;color:#dbe8ff}.check-status p{color:#aab9d2}.check-status[data-state="verified"]{background:#183329;border-color:#35684c;color:#b9e6c9}.check-status[data-state="new"]{background:#3a3020;border-color:#6b5830;color:#f0d99c}.check-status[data-state="unknown"]{background:#172b45;border-color:#425776;color:#dbe8ff}}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #4b83d0;outline-offset:2px}.tabs button:focus-visible{outline-offset:-2px}@media(max-width:380px){main{padding:14px 10px 28px}header{padding:20px 17px;border-radius:18px}h1{font-size:24px}.card{padding:14px}.result{padding:18px}.line{gap:8px;font-size:13px}.line strong{white-space:normal}.check-status{padding:10px}}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--ink:#e8efff;--muted:#aab9d2;--blue:#79adff;--blue-dark:#b5d1ff;--paper:#101a2a;--line:#2b3c57;--white:#17243a}header{background:linear-gradient(135deg,#10264a,#174ea6 68%,#235d9f);color:#fff;border-bottom-color:#79adff}header p{color:#dbe8ff}.card{box-shadow:0 4px 16px #00000018}.tabs{background:#202f47}.tabs button.active{background:#245aa8;color:#fff}.money{background:#17243a;border-color:#425776}.money input{background:transparent;color:#f2f6ff}.money span{color:#9fc4ff}.select-wrap select{background:#17243a;border-color:#425776;color:var(--ink)}.result{background:linear-gradient(135deg,#103675,#174ea6 72%,#235d9f);border-color:#3b5f91;box-shadow:0 8px 22px #00000030}.result .caption{color:#e0ebff}.result .amount{color:#fff}.result .sub{color:#e0ebff}.breakdown-heading{color:#9fc4ff}.line.total{background:#1d3557;border-color:#45658e}.line.total strong{color:#d7e6ff}.line strong{color:#c8dcff}.line:nth-child(2) strong,.line:nth-child(3) strong{color:#8bb8f4}.options-title,.section-title{color:#e8efff}.option-group{background:#142239;border-color:#354a69}.option-group-title{color:#9fc4ff}.option-help{color:#aab9d2}.check .check-help{color:#aab9d2}footer{border-color:var(--line)}.check-status{background:#172b45;border-color:#425776;color:#dbe8ff}.check-status p{color:#aab9d2}.check-status[data-state="verified"]{background:#183329;border-color:#35684c;color:#b9e6c9}.check-status[data-state="new"]{background:#3a3020;border-color:#6b5830;color:#f0d99c}.check-status[data-state="unknown"]{background:#172b45;border-color:#425776;color:#dbe8ff}.check-status[data-state="unknown"] .next-check{border-color:#425776;color:#c4d8f2}}
 </style>
 </head>
 <body>
@@ -100,21 +100,21 @@ button:focus-visible,input:focus-visible{outline:3px solid #4b83d0;outline-offse
 <p class="option-help">Zvýhodnění se liší podle pořadí dítěte. Na stejné dítě je za daný měsíc uplatňuje pouze jeden z rodičů. Kalkulačka nyní předpokládá, že žádné z dětí nemá průkaz ZTP/P.</p>
 </div>
 </div>
-<div class="option-group">
-<p class="option-group-title">Zdravotní postižení</p>
+<details class="advanced-options">
+<summary>Další daňové slevy: invalidita a ZTP/P</summary>
 <div class="select-wrap">
 <label for="invalidity">Vlastní invalidita</label>
 <select id="invalidity"><option value="0">Bez této slevy</option><option value="210">Invalidita I. nebo II. stupně — 210 Kč/měs.</option><option value="420">Invalidita III. stupně — 420 Kč/měs.</option></select>
-<p class="option-help">Vyberte stupeň invalidity, pokud splňujete podmínky pro uplatnění slevy.</p>
+<p class="option-help">Vyberte stupeň invalidity, pokud splňujete zákonné podmínky pro uplatnění slevy.</p>
 </div>
-<label class="check"><input id="ztpp" type="checkbox"><span><span class="check-title">Jsem držitelem průkazu ZTP/P</span><span class="check-help">Dodatečná sleva 1 345 Kč měsíčně při splnění zákonných podmínek.</span></span></label>
-</div>
+<label class="check"><input id="ztpp" type="checkbox"><span><span class="check-title">Držitel průkazu ZTP/P</span><span class="check-help">Dodatečná sleva 1 345 Kč měsíčně při splnění zákonných podmínek.</span></span></label>
+</details>
 <p class="hint">Výsledek je orientační. Uplatnění slev závisí na splnění zákonných podmínek a doložení zaměstnavateli. Měsíční bonus na děti se vyplácí nejméně ve výši 50 Kč a při příjmu alespoň 11 200 Kč.</p><p class="hint">U hrubé mzdy pod 22 400 Kč kalkulačka nezohledňuje případný doplatek zdravotního pojištění do minimálního vyměřovacího základu. Výjimky závisí na konkrétní situaci zaměstnance.</p>
 </div>
 <div class="result" aria-live="polite">
 <div class="caption" id="resultLabel">Potřebná hrubá měsíční mzda</div><div class="amount" id="resultAmount">50 996 Kč</div><div class="sub" id="resultSub">Čistá mzda po zákonných odvodech a dani</div>
 </div>
-<div class="rows" id="breakdown"></div>
+<details class="breakdown-details"><summary>Podrobný rozpis výpočtu</summary><div class="rows" id="breakdown"></div></details>
 </section>
 <p class="note" style="text-align:center;margin:14px 4px">Orientační výpočet pro standardní pracovní poměr v ČR · 2026</p>
 <footer>Reverzní mzdová kalkulačka · Autor: David Habán</footer>
