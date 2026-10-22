@@ -70,7 +70,8 @@ def fetch_text(url):
     return visible
 
 def main():
-    checked_at = now_iso()\n    parameter_year = datetime.now(timezone.utc).year
+    checked_at = now_iso()
+    parameter_year = datetime.now(timezone.utc).year
     previous = load_json(SNAPSHOT_PATH, {"sources": {}})
     previous_sources = previous.get("sources", {})
     next_sources = {}
