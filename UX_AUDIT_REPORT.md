@@ -48,3 +48,13 @@ Zdroje:
 - Výsledek a podrobný rozpis zůstávají ve výstupu viditelné i tehdy, když je rozpis na obrazovce zavřený.
 - Změna v index.html: commit 5bf8f32b42a00bddaa7655c1db5684dafc9e7b98.
 - Ověření: kontrola přítomnosti CSS pro tisk, tlačítka a obsluhy window.print(). Skutečný tisk z prohlížeče nebyl v tomto běhu proveden.
+
+
+## Automatická pravidelná kontrola – 2026-10-22
+
+- Workflow kontroly oficiálních zdrojů je naplánován denně (GitHub Actions), místo dosavadního týdenního spuštění.
+- Stavový panel při načtení stránky porovnává čas poslední kontroly se sedmidenním limitem a kontroluje, zda stav odpovídá aktuálnímu kalendářnímu roku.
+- Při zastaralém záznamu, chybějícím datu nebo nesouladu roku zobrazí upozornění „Kontrola oficiálních zdrojů je zastaralá“.
+- Skript nyní ukládá aktuální kalendářní rok dynamicky místo pevné hodnoty 2026.
+- Kontrola nadále detekuje změny obsahu oficiálních stránek; automaticky neověřuje právní správnost jednotlivých hodnot a sama nemění výpočetní parametry kalkulačky.
+- Omezení: GitHub Actions může plánované spuštění zpozdit; pro tuto variantu se při návštěvě stránky zobrazuje poslední uložený stav, nová kontrola se nespouští synchronně při otevření webu.
