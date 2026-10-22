@@ -59,9 +59,13 @@ def fetch_text(url):
             raise RuntimeError(f"HTTP {response.status}")
         raw = response.read()
         charset = response.headers.get_content_charset() or "utf-8"
-    parser = VisibleText()
-    parser.feed(raw.decode(charset, errors="replace"))
-    text = re.sub(r"\s+", " ", " ".join(parser.parts)).strip()
+    if raw[:4] == b"%PDF":
+        proc = subprocess.run(["pdftotext", "-", "-"], input=raw, capture_output=True, check=True)
+        text = re.sub(r"\s+", " ", proc.stdout.decode("utf-8", errors="replace")).strip()
+    else:
+        parser = VisibleText()
+        parser.feed(raw.decode(charset, errors="replace"))
+        text = re.sub(r"\s+", " ", " ".join(parser.parts)).strip()
     if len(text) < 200:
         raise RuntimeError("Zdroj vrátil nečekaně málo čitelného textu")
     return text
