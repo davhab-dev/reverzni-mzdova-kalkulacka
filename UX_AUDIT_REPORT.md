@@ -29,3 +29,13 @@ Zdroje:
 - Nejde o kompletní mzdovou účtárenskou certifikaci. Výpočet stále předpokládá standardní pracovní poměr a neřeší všechny výjimky, poměrné měsíce, souběhy příjmů ani individuální výjimky z minimálního vyměřovacího základu.
 - Počet dětí se ZTP/P v UI zadává jako počet; implementace zvýhodnění přiřazuje tyto děti k nejvyšším pořadím v zadaném počtu dětí. Pokud je důležité přesné pořadí konkrétního dítěte, je vhodnější budoucí UI s individuálním nastavením každého dítěte.
 - Změny byly ověřeny kontrolou obsahu souboru na GitHubu; automatické browserové testy ani kompletní testování čtečkou obrazovky nebyly v tomto běhu provedeny.
+
+
+## Navazující checkpoint a úpravy – 2026-10-22
+
+- Před pokračováním byl vytvořen checkpoint `UX_CALC_CHECKPOINT_2026-10-22.md`, který zaznamenává výchozí blob SHA aktuálního `index.html`.
+- Opraven rozpis daně: „Daň po osobních slevách“, skutečně uplatněné zvýhodnění na děti a daň po zvýhodnění nyní vycházejí z oddělených mezivýsledků.
+- Vysvětlení u ZTP/P na děti nyní výslovně uvádí, že kalkulačka předpokládá ZTP/P u dětí s nejvyšším pořadím. Jde o zjednodušení, nikoliv univerzální model každé rodinné situace.
+- Zpřesněno upozornění, že výběr slev sám o sobě nepotvrzuje nárok a že kalkulačka nepokrývá všechny individuální výjimky.
+- Změna kódu: commit `8817bd83f3c64c263d6268b4b385fa4c4bc73e83`.
+- Omezení: nebyl proveden automatizovaný test v prohlížeči ani nezávislá mzdová certifikace. Stav `status.json` zůstává `unknown`; výpočet se proto nesmí označovat za oficiálně ověřený. Před tvrzením o správnosti pro rok 2026 je nutné ověřit sazby, zaokrouhlování, limity a všechny mezní případy podle platných oficiálních pravidel.
