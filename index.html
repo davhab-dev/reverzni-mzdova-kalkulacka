@@ -130,13 +130,15 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid 
 <option value="0">Žádné dítě</option><option value="1">1 dítě</option><option value="2">2 děti</option><option value="3">3 děti</option><option value="4">4 děti</option><option value="5">5 dětí</option>
 </select>
 <p class="option-help">Na stejné dítě uplatňuje zvýhodnění za daný měsíc pouze jeden z rodičů.</p>
-<label for="ztppChildren">Počet těchto dětí s průkazem ZTP/P</label>
-<select id="ztppChildren"><option value="0">Žádné dítě</option><option value="1">1 dítě</option><option value="2">2 děti</option><option value="3">3 děti</option><option value="4">4 děti</option><option value="5">5 dětí</option></select>
-<p class="option-help">Zvýhodnění na dítě s průkazem ZTP/P se zdvojnásobuje. Kalkulačka předpokládá, že jde o děti s nejvyšším pořadím; pokud ZTP/P náleží jinému dítěti, může se výsledek lišit. Počet se automaticky omezí na zadaný počet dětí.</p>
 </div>
 </div>
 <details class="advanced-options">
 <summary>Další daňové slevy: invalidita a ZTP/P</summary>
+<div class="select-wrap">
+<label for="ztppChildren">Počet dětí s průkazem ZTP/P</label>
+<select id="ztppChildren"><option value="0">Žádné dítě</option><option value="1">1 dítě</option><option value="2">2 děti</option><option value="3">3 děti</option><option value="4">4 děti</option><option value="5">5 dětí</option></select>
+<p class="option-help">Zvýhodnění na dítě s průkazem ZTP/P se zdvojnásobuje. Kalkulačka předpokládá, že jde o děti s nejvyšším pořadím; pokud ZTP/P náleží jinému dítěti, může se výsledek lišit. Počet se automaticky omezí na zadaný počet dětí.</p>
+</div>
 <div class="select-wrap">
 <label for="invalidity">Vlastní invalidita</label>
 <select id="invalidity"><option value="0">Bez této slevy</option><option value="210">Invalidita I. nebo II. stupně — 210 Kč/měs.</option><option value="420">Invalidita III. stupně — 420 Kč/měs.</option></select>
