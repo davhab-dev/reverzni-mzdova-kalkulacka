@@ -81,8 +81,8 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid 
 <button id="grossTab" type="button" role="tab" aria-selected="false">HRUBÁ → ČISTÁ</button>
 </div>
 <label id="amountLabel" for="amount">Požadovaná čistá měsíční mzda</label>
-<div class="money"><input id="amount" type="number" inputmode="numeric" min="0" step="100" value="30000" aria-describedby="amountHint"><span>Kč</span></div>
-<div class="hint" id="amountHint">Zadejte částku v českých korunách.</div>
+<div class="money"><input id="amount" type="number" inputmode="numeric" min="0" step="100" placeholder="Zadejte požadovanou čistou mzdu" aria-describedby="amountHint"><span>Kč</span></div>
+<div class="hint" id="amountHint">Zadejte částku v Kč měsíčně.</div>
 <div class="options">
 <p class="options-title">Nastavení daňových slev</p>
 <p class="options-intro">Zaškrtněte pouze slevy a zvýhodnění, na které máte nárok a které uplatňujete při výpočtu měsíční mzdy.</p>
@@ -139,12 +139,12 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid 
  function row(label,value,extraClass){return '<div class="line '+(extraClass||'')+'"><span>'+label+'</span><strong>'+value+'</strong></div>';}
  function heading(label){return '<div class="breakdown-heading">'+label+'</div>';}
  function render(){
-  const raw=Number($('amount').value),amount=Number.isFinite(raw)&&raw>=0?Math.round(raw):0,o=options();let c;
+  const entered=$('amount').value.trim();if(entered===''){$('amountLabel').textContent=mode==='net'?'Požadovaná čistá měsíční mzda':'Hrubá měsíční mzda';$('resultLabel').textContent=mode==='net'?'Potřebná hrubá měsíční mzda':'Čistá měsíční mzda';$('resultAmount').textContent='—';$('resultSub').textContent='Zadejte částku pro výpočet';$('breakdown').replaceChildren();return;}const raw=Number(entered),amount=Number.isFinite(raw)&&raw>=0?Math.round(raw):0,o=options();let c;
   if(mode==='net'){c=reverse(amount,o);$('amountLabel').textContent='Požadovaná čistá měsíční mzda';$('resultLabel').textContent='Potřebná hrubá měsíční mzda';$('resultAmount').textContent=fmt(c.gross);$('resultSub').textContent='Výsledná čistá mzda: '+fmt(c.net);}
   else{c=calc(amount,o);$('amountLabel').textContent='Hrubá měsíční mzda';$('resultLabel').textContent='Čistá měsíční mzda';$('resultAmount').textContent=fmt(c.net);$('resultSub').textContent='Hrubá mzda: '+fmt(c.gross);}
   $('breakdown').innerHTML=heading('Základ výpočtu')+row('Hrubá mzda',fmt(c.gross))+row('Základ daně po zaokrouhlení',fmt(c.taxBase))+heading('Povinné odvody')+row('Sociální pojištění (7,1 %)','− '+fmt(c.social))+row('Zdravotní pojištění (4,5 %)','− '+fmt(c.health))+heading('Daň a slevy')+row('Daň před slevami (15 % / 23 %)',fmt(c.taxBeforeCredit))+row('Sleva na poplatníka','− '+fmt(c.taxpayerCredit))+row('Sleva na invaliditu','− '+fmt(c.invalidityCredit))+row('Sleva ZTP/P','− '+fmt(c.ztppCredit))+row('Zvýhodnění na děti','− '+fmt(c.childrenCredit))+row('Daň po slevách','− '+fmt(c.tax))+row('Daňový bonus na děti',c.taxBonus?'+ '+fmt(c.taxBonus):fmt(0))+heading('Výsledek')+row('Čistá mzda',fmt(c.net),'total')+(o.children&&!c.bonusEligible?'<p class="hint">Daňový bonus na děti nebyl započten, protože hrubý příjem nedosahuje orientační hranice 11 200 Kč měsíčně.</p>':'');
  }
- function setMode(next){mode=next;$('netTab').classList.toggle('active',mode==='net');$('grossTab').classList.toggle('active',mode==='gross');$('netTab').setAttribute('aria-selected',mode==='net');$('grossTab').setAttribute('aria-selected',mode==='gross');$('amount').value=mode==='net'?30000:45000;render();}
+ function setMode(next){mode=next;$('netTab').classList.toggle('active',mode==='net');$('grossTab').classList.toggle('active',mode==='gross');$('netTab').setAttribute('aria-selected',mode==='net');$('grossTab').setAttribute('aria-selected',mode==='gross');$('amount').value='';$('amount').placeholder=mode==='net'?'Zadejte požadovanou čistou mzdu':'Zadejte hrubou mzdu';$('resultLabel').textContent=mode==='net'?'Potřebná hrubá měsíční mzda':'Čistá měsíční mzda';$('resultAmount').textContent='—';$('resultSub').textContent='Zadejte částku pro výpočet';$('breakdown').replaceChildren();render();}
  $('netTab').addEventListener('click',()=>setMode('net'));$('grossTab').addEventListener('click',()=>setMode('gross'));$('amount').addEventListener('input',render);['taxCredit','children','invalidity','ztpp'].forEach(id=>$(id).addEventListener('change',render));render();
  async function updateStatus(){
   const box=$('dataStatus');try{
