@@ -1,6 +1,6 @@
 {
   "status": "unknown",
-  "checked_at": "2026-10-22T10:36:19Z",
+  "checked_at": "2026-10-22T10:39:26Z",
   "parameter_year": 2026,
   "check_type": "official_source_and_calculator_code_audit",
   "message": "Nepodařilo se načíst všechny oficiální zdroje; aktuálnost nelze potvrdit.",
