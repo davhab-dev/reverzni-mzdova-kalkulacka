@@ -1,10 +1,137 @@
 {
   "status": "unknown",
-  "checked_at": "2026-10-21T15:08:47Z",
+  "checked_at": "2026-10-22T10:36:19Z",
   "parameter_year": 2026,
-  "check_type": "official_page_content_change_detection",
-  "message": "Zdroje byly technicky zkontrolovány, ale mzdové parametry kalkulačky zatím nebyly potvrzeny.",
+  "check_type": "official_source_and_calculator_code_audit",
+  "message": "Nepodařilo se načíst všechny oficiální zdroje; aktuálnost nelze potvrdit.",
   "changed_sources": [],
-  "errors": [],
-  "review_required": true
+  "errors": [
+    {
+      "source": "cssz",
+      "message": "HTTP Error 404: Not Found"
+    }
+  ],
+  "checks": [
+    {
+      "parameter": "employee social insurance 7.1%",
+      "source": "cssz",
+      "matched": false
+    },
+    {
+      "parameter": "employee health insurance rate 4.5% (one third of 13.5%)",
+      "source": "vzp",
+      "matched": true
+    },
+    {
+      "parameter": "taxpayer credit 30,840 CZK/year",
+      "source": "financni_sprava",
+      "matched": true
+    },
+    {
+      "parameter": "taxpayer credit 2,570 CZK/month",
+      "source": "financni_sprava",
+      "matched": true
+    },
+    {
+      "parameter": "child credit 1,267 CZK/month",
+      "source": "financni_sprava",
+      "matched": true
+    },
+    {
+      "parameter": "child credit 1,860 CZK/month",
+      "source": "financni_sprava",
+      "matched": true
+    },
+    {
+      "parameter": "child credit 2,320 CZK/month",
+      "source": "financni_sprava",
+      "matched": true
+    },
+    {
+      "parameter": "minimum wage / health minimum base 22,400 CZK",
+      "source": "vzp",
+      "matched": true
+    },
+    {
+      "parameter": "health minimum premium 3,024 CZK",
+      "source": "vzp",
+      "matched": true
+    },
+    {
+      "parameter": "15%/23% tax threshold 146,901 CZK/month",
+      "source": "financni_sprava",
+      "matched": true
+    },
+    {
+      "parameter": "tax base rounds upward to hundreds above 100 CZK",
+      "source": "financni_sprava",
+      "matched": true
+    },
+    {
+      "parameter": "minimum child bonus 50 CZK",
+      "source": "financni_sprava_qa",
+      "matched": true
+    },
+    {
+      "parameter": "child bonus income threshold 11,200 CZK",
+      "source": "financni_sprava_qa",
+      "matched": true
+    },
+    {
+      "parameter": "code: social rate implementation",
+      "source": "index.html",
+      "matched": true
+    },
+    {
+      "parameter": "code: health rate implementation",
+      "source": "index.html",
+      "matched": true
+    },
+    {
+      "parameter": "code: monthly 23% threshold implementation",
+      "source": "index.html",
+      "matched": true
+    },
+    {
+      "parameter": "code: taxpayer credit implementation",
+      "source": "index.html",
+      "matched": true
+    },
+    {
+      "parameter": "code: invalidity credits implementation",
+      "source": "index.html",
+      "matched": true
+    },
+    {
+      "parameter": "code: ZTP/P credit implementation",
+      "source": "index.html",
+      "matched": true
+    },
+    {
+      "parameter": "code: child bonus threshold implementation",
+      "source": "index.html",
+      "matched": true
+    },
+    {
+      "parameter": "code: minimum child bonus implementation",
+      "source": "index.html",
+      "matched": true
+    },
+    {
+      "parameter": "code: child credit values implementation",
+      "source": "index.html",
+      "matched": true
+    },
+    {
+      "parameter": "code: ZTP/P child doubling implementation",
+      "source": "index.html",
+      "matched": true
+    }
+  ],
+  "failed_parameters": [
+    "employee social insurance 7.1%"
+  ],
+  "review_required": true,
+  "automatic_parameter_updates": false,
+  "automatic_update_policy": "Legal constants are never rewritten from loosely matched web text; source drift fails closed to manual review."
 }
