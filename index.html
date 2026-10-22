@@ -192,7 +192,8 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid 
    const labels={
     verified:['✓','Mzdové parametry jsou aktuální','Při poslední kontrole nebyla zjištěna změna sledovaného obsahu oficiálních zdrojů. To samo o sobě není nezávislým potvrzením správnosti výpočtu.'],
     new:['!','Byly zjištěny možné změny mzdových parametrů','Na oficiálním zdroji se změnil obsah. Je potřeba ověřit, zda to ovlivňuje sazby, daně nebo slevy.'],
-    unknown:['ⓘ','Aktuálnost mzdových parametrů nebyla ověřena','Nelze potvrdit, zda kalkulačka používá nejnovější platná pravidla.']
+    unknown:['ⓘ','Kontrolu finančních parametrů se nepodařilo dokončit','Oficiální zdroje nebyly úspěšně načteny. Aktuálnost výpočtu proto nelze potvrdit.'],
+    review:['!','Některé finanční parametry vyžadují kontrolu','Automatická kontrola nedokázala potvrdit všechny hodnoty v oficiálních zdrojích. Kalkulačka je automaticky nemění.']
    };
    const checkedAt=status.checked_at ? new Date(status.checked_at) : null;
    const validDate=checkedAt && !Number.isNaN(checkedAt.getTime());
