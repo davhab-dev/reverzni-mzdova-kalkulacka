@@ -160,7 +160,7 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid 
 (() => {
  const $ = id => document.getElementById(id);
  let mode = 'gross';
- const fmt = n => Math.round(n).toLocaleString('cs-CZ') + ' Kč';
+ const fmt = n => { const rounded=Math.round(n); return (Object.is(rounded,-0)||rounded===0?0:rounded).toLocaleString('cs-CZ') + ' Kč'; };
  function childCredit(count,ztppCount=0) { const n=Math.max(0,Number(count)||0),z=Math.min(n,Math.max(0,Number(ztppCount)||0)); let total=0; for(let i=1;i<=n;i++){const base=i===1?1267:i===2?1860:2320;total+=base+(i>n-z?base:0);} return total; }
  function calc(gross,options) {
   const social=Math.ceil(gross*71/1000),health=Math.ceil(Math.ceil(gross*135/1000)/3),taxBase=gross<=100?Math.ceil(gross):Math.ceil(gross/100)*100;
