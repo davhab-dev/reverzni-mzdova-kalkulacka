@@ -116,8 +116,8 @@ def main():
         "check_type": "explicit_official_parameter_checks", "message": message,
         "changed_sources": [], "errors": errors, "checks": checks,
         "failed_parameters": failed, "review_required": state != "verified"
-    }, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
-    SNAPSHOT_PATH.write_text(json.dumps({"checked_at": checked_at, "sources": fingerprints}, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+    }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    SNAPSHOT_PATH.write_text(json.dumps({"checked_at": checked_at, "sources": fingerprints}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"Result: {state}; failed={len(failed)}; errors={len(errors)}")
 
 if __name__ == "__main__":
