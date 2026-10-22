@@ -70,7 +70,7 @@ def fetch_text(url):
     return visible
 
 def main():
-    checked_at = now_iso()
+    checked_at = now_iso()\n    parameter_year = datetime.now(timezone.utc).year
     previous = load_json(SNAPSHOT_PATH, {"sources": {}})
     previous_sources = previous.get("sources", {})
     next_sources = {}
@@ -120,7 +120,7 @@ def main():
     STATUS_PATH.write_text(json.dumps({
         "status": state,
         "checked_at": checked_at,
-        "parameter_year": 2026,
+        "parameter_year": parameter_year,
         "check_type": "official_page_content_change_detection",
         "message": message,
         "changed_sources": changed,
