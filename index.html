@@ -63,6 +63,33 @@ label{display:block;font-weight:650;font-size:14px;margin:16px 0 7px}
 footer{text-align:center;font-size:11px;color:var(--muted);padding:16px 4px;border-top:1px solid var(--line);margin-top:12px}
 button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #4b83d0;outline-offset:2px}.tabs button:focus-visible{outline-offset:-2px}@media(max-width:380px){main{padding:14px 10px 28px}header{padding:20px 17px;border-radius:18px}h1{font-size:24px}.card{padding:14px}.result{padding:18px}.line{gap:8px;font-size:13px}.line strong{white-space:normal}.check-status{padding:10px}}
 @media (prefers-color-scheme:dark){:root{color-scheme:dark;--ink:#e8efff;--muted:#aab9d2;--blue:#79adff;--blue-dark:#b5d1ff;--paper:#101a2a;--line:#2b3c57;--white:#17243a}header{background:linear-gradient(135deg,#10264a,#174ea6 68%,#235d9f);color:#fff;border-bottom-color:#72d99a}header p{color:#dbe8ff}.card{box-shadow:0 4px 16px #00000018}.tabs{background:#202f47}.tabs button.active{background:#245aa8;color:#fff}.money{background:#17243a;border-color:#425776}.money input{background:transparent;color:#f2f6ff}.money span{color:#9fc4ff}.select-wrap select{background:#17243a;border-color:#425776;color:var(--ink)}.result{background:linear-gradient(135deg,#103675,#174ea6 72%,#235d9f);border-color:#3b5f91;box-shadow:0 8px 22px #00000030}.result .caption{color:#e0ebff}.result .amount{color:#fff}.result .sub{color:#e0ebff}.breakdown-heading{color:#9fc4ff}.line.total{background:#1d3557;border-color:#45658e}.line.total strong{color:#d7e6ff}.line strong{color:#c8dcff}.line:nth-child(2) strong,.line:nth-child(3) strong{color:#8bb8f4}.options-title,.section-title{color:#e8efff}.option-group{background:#142239;border-color:#354a69}.advanced-options{background:#142239;border-color:#354a69}.advanced-options summary{color:#b5d1ff}.option-group-title{color:#9fc4ff}.option-help{color:#aab9d2}.check .check-help{color:#aab9d2}footer{border-color:var(--line)}.check-status{background:#172b45;border-color:#425776;color:#dbe8ff}.check-status p{color:#aab9d2}.check-status[data-state="verified"]{background:#183329;border-color:#35684c;color:#b9e6c9}.check-status[data-state="new"]{background:#3a3020;border-color:#6b5830;color:#f0d99c}.check-status[data-state="unknown"]{background:#172b45;border-color:#425776;color:#dbe8ff}.check-status[data-state="unknown"] .next-check{border-color:#425776;color:#c4d8f2}}
+
+@media print{
+ @page{size:auto;margin:14mm}
+ :root{color-scheme:light;--ink:#172b4d;--muted:#61718a;--line:#d9e3f1;--white:#fff}
+ body{background:#fff!important;color:#172b4d!important;font-size:11pt}
+ main{max-width:none;margin:0;padding:0}
+ header{background:#fff!important;color:#172b4d!important;border:0;border-bottom:2px solid #72d99a;border-radius:0;padding:0 0 10px;margin:0 0 12px;box-shadow:none}
+ header .kicker{color:#61718a}
+ header h1{font-size:20pt;color:#174ea6!important;margin:4px 0}
+ header p{color:#61718a!important;margin:4px 0}
+ #dataStatus,.tabs,.options,.note,footer,.print-button{display:none!important}
+ .card{border:0;box-shadow:none;border-radius:0;padding:0;margin:0}
+ .result{background:#fff!important;color:#172b4d!important;border:1px solid #d9e3f1;border-radius:8px;box-shadow:none;padding:14px;margin:0 0 12px}
+ .result .caption,.result .sub{color:#61718a!important}
+ .result .amount,.result .amount.net-result,.result .amount.gross-result{color:#174ea6!important;font-size:25pt}
+ .result .sub{border-color:#d9e3f1}
+ .breakdown-details{display:block;border:1px solid #d9e3f1;overflow:visible}
+ .breakdown-details summary{display:block;padding:9px 12px;border-bottom:1px solid #d9e3f1}
+ .breakdown-details summary:after{display:none}
+ .breakdown-details .rows,.breakdown-details:not([open]) .rows{display:block!important;padding:0 12px 8px}
+ .line{font-size:10pt;padding:6px 0;break-inside:avoid}
+ .line strong{color:#172b4d!important}
+ .line.total{background:#f3f7fc!important;border-color:#c7dcfa}
+ .line.total strong{color:#174ea6!important}
+ .breakdown-heading{color:#174ea6!important;padding-top:10px}
+ .hint{color:#61718a!important}
+}
 </style>
 </head>
 <body>
@@ -124,6 +151,7 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid 
 <div class="caption" id="resultLabel">Čistá měsíční mzda</div><div class="amount pending" id="resultAmount">Výsledek se zobrazí po zadání částky.</div><div class="sub" id="resultSub"></div>
 </div>
 <details class="breakdown-details"><summary>Podrobný rozpis výpočtu</summary><div class="rows" id="breakdown"></div></details>
+<button id="printButton" class="print-button" type="button">Vytisknout výsledek</button>
 </section>
 <p class="note" style="text-align:center;margin:14px 4px">Orientační výpočet pro standardní pracovní poměr v ČR · 2026</p>
 <footer>Reverzní mzdová kalkulačka · Autor: David Habán</footer>
@@ -156,7 +184,7 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid 
   $('breakdown').innerHTML=heading('Základ výpočtu')+row('Hrubá mzda',fmt(c.gross))+row('Základ daně po zaokrouhlení',fmt(c.taxBase))+heading('Povinné odvody')+row('Sociální pojištění (7,1 %)','− '+fmt(c.social))+row('Zdravotní pojištění (4,5 %)','− '+fmt(c.health))+heading('Daň')+row('Daň před slevami (15 % / 23 %)',fmt(c.taxBeforeCredit))+row('Sleva na poplatníka','− '+fmt(c.taxpayerCredit))+row('Sleva na invaliditu','− '+fmt(c.invalidityCredit))+row('Sleva ZTP/P','− '+fmt(c.ztppCredit))+row('Daň po osobních slevách',fmt(c.taxAfterPersonal))+row('Uplatněné zvýhodnění na děti','− '+fmt(c.childCreditApplied))+row('Daň po zvýhodnění na děti',fmt(c.tax))+row('Daňový bonus na děti',c.taxBonus?'+ '+fmt(c.taxBonus):fmt(0))+heading('Výsledek')+row('Čistá mzda',fmt(c.net),'total')+(o.children&&!c.bonusEligible?'<p class="hint">Daňový bonus na děti nebyl započten, protože hrubý příjem nedosahuje orientační hranice 11 200 Kč měsíčně.</p>':'');
  }
  function setMode(next){mode=next;$('netTab').classList.toggle('active',mode==='net');$('grossTab').classList.toggle('active',mode==='gross');$('netTab').setAttribute('aria-selected',mode==='net');$('grossTab').setAttribute('aria-selected',mode==='gross');$('amount').value='';$('amount').placeholder='Částka v Kč';$('resultLabel').textContent=mode==='net'?'Potřebná hrubá měsíční mzda':'Čistá měsíční mzda';$('resultAmount').textContent='Výsledek se zobrazí po zadání částky.';$('resultAmount').classList.add('pending');$('resultSub').textContent='';$('breakdown').replaceChildren();render();}
- $('netTab').addEventListener('click',()=>setMode('net'));$('grossTab').addEventListener('click',()=>setMode('gross'));$('amount').addEventListener('input',render);['taxCredit','children','ztppChildren','invalidity','ztpp'].forEach(id=>$(id).addEventListener('change',render));render();
+ $('printButton').addEventListener('click',()=>window.print());$('netTab').addEventListener('click',()=>setMode('net'));$('grossTab').addEventListener('click',()=>setMode('gross'));$('amount').addEventListener('input',render);['taxCredit','children','ztppChildren','invalidity','ztpp'].forEach(id=>$(id).addEventListener('change',render));render();
  async function updateStatus(){
   const box=$('dataStatus');try{
    const response=await fetch('./status.json?ts='+Date.now(),{cache:'no-store'});if(!response.ok)throw new Error('status unavailable');
