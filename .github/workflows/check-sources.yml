@@ -24,6 +24,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Ověř syntaxi kontrolního skriptu
+        run: python -m py_compile scripts/check_sources.py
+
       - name: Zkontroluj oficiální zdroje
         run: python scripts/check_sources.py
 
