@@ -13,6 +13,7 @@ from urllib.request import Request, urlopen
 import hashlib
 import json
 import re
+import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 STATUS_PATH = ROOT / "status.json"
@@ -21,7 +22,7 @@ INDEX_PATH = ROOT / "index.html"
 SOURCES = {
     "financni_sprava": "https://financnisprava.gov.cz/cs/dane/dane/dan-z-prijmu/zamestnanci-zamestnavatele/obecne-informace",
     "financni_sprava_qa": "https://financnisprava.gov.cz/cs/dane/dane/dan-z-prijmu/zamestnanci-zamestnavatele/dotazy-a-odpovedi/2026/aktualni-dotazy-a-odpovedi-k-dani-z",
-    "cssz": "https://www-in.cssz.cz/web/lang/sazby-pojistneho?lang=en",
+    "cssz": "https://www.cssz.cz/documents/20143/2872693/TZ__P%C5%99ehled%20nejd%C5%AFle%C5%BEit%C4%9Bj%C5%A1%C3%ADch%20%C3%BAdaj%C5%AF%20pro%20soci%C3%A1ln%C3%AD%20zabezpe%C4%8Den%C3%AD%20v%20roce%202026.pdf/3c0800f6-15d0-a4df-8a9e-35b93969b355",
     "vzp": "https://www.vzp.cz/platci/informace/zamestnavatel/vymerovaci-zaklad-a-vypocet-pojistneho",
 }
 
