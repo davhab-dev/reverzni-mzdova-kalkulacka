@@ -81,10 +81,10 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid 
 </div>
 <section class="card">
 <div class="tabs" role="tablist" aria-label="Směr výpočtu">
-<button id="grossTab" type="button" role="tab" aria-selected="false">HRUBÁ → ČISTÁ</button>
-<button id="netTab" class="active" type="button" role="tab" aria-selected="true">ČISTÁ → HRUBÁ</button>
+<button id="grossTab" class="active" type="button" role="tab" aria-selected="true">HRUBÁ → ČISTÁ</button>
+<button id="netTab" type="button" role="tab" aria-selected="false">ČISTÁ → HRUBÁ</button>
 </div>
-<label id="amountLabel" for="amount">Požadovaná čistá měsíční mzda</label>
+<label id="amountLabel" for="amount">Hrubá měsíční mzda</label>
 <div class="money"><input id="amount" type="number" inputmode="numeric" min="0" step="100" placeholder="Částka v Kč" aria-describedby="amountHint"><span>Kč</span></div>
 <div class="hint" id="amountHint">Zadejte částku v Kč měsíčně.</div>
 <div class="options">
@@ -120,7 +120,7 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid 
 <p class="hint">Výpočet předpokládá standardní pracovní poměr za celý měsíc, podepsané prohlášení pouze tehdy, když je zvolena sleva na poplatníka, a nezohledňuje další příjmy ani individuální výjimky.</p>
 </div>
 <div class="result" aria-live="polite">
-<div class="caption" id="resultLabel">Potřebná hrubá měsíční mzda</div><div class="amount" id="resultAmount">50 996 Kč</div><div class="sub" id="resultSub">Čistá mzda po zákonných odvodech a dani</div>
+<div class="caption" id="resultLabel">Čistá měsíční mzda</div><div class="amount pending" id="resultAmount">Výsledek se zobrazí po zadání částky.</div><div class="sub" id="resultSub"></div>
 </div>
 <details class="breakdown-details"><summary>Podrobný rozpis výpočtu</summary><div class="rows" id="breakdown"></div></details>
 </section>
@@ -130,7 +130,7 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid 
 <script>
 (() => {
  const $ = id => document.getElementById(id);
- let mode = 'net';
+ let mode = 'gross';
  const fmt = n => Math.round(n).toLocaleString('cs-CZ') + ' Kč';
  function childCredit(count,ztppCount=0) { const n=Math.max(0,Number(count)||0),z=Math.min(n,Math.max(0,Number(ztppCount)||0)); let total=0; for(let i=1;i<=n;i++){const base=i===1?1267:i===2?1860:2320;total+=base+(i>n-z?base:0);} return total; }
  function calc(gross,options) {
