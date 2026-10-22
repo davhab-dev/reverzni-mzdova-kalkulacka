@@ -39,3 +39,12 @@ Zdroje:
 - Zpřesněno upozornění, že výběr slev sám o sobě nepotvrzuje nárok a že kalkulačka nepokrývá všechny individuální výjimky.
 - Změna kódu: commit `8817bd83f3c64c263d6268b4b385fa4c4bc73e83`.
 - Omezení: nebyl proveden automatizovaný test v prohlížeči ani nezávislá mzdová certifikace. Stav `status.json` zůstává `unknown`; výpočet se proto nesmí označovat za oficiálně ověřený. Před tvrzením o správnosti pro rok 2026 je nutné ověřit sazby, zaokrouhlování, limity a všechny mezní případy podle platných oficiálních pravidel.
+
+
+## Tisk výsledku – 2026-10-22
+
+- Přidáno tlačítko „Vytisknout výsledek“, které otevře standardní tiskový dialog prohlížeče.
+- Tisková sestava používá bílé pozadí a úsporné rozvržení; skryje vstupní formulář, přepínače režimu, stavový panel a ovládací prvky.
+- Výsledek a podrobný rozpis zůstávají ve výstupu viditelné i tehdy, když je rozpis na obrazovce zavřený.
+- Změna v index.html: commit 5bf8f32b42a00bddaa7655c1db5684dafc9e7b98.
+- Ověření: kontrola přítomnosti CSS pro tisk, tlačítka a obsluhy window.print(). Skutečný tisk z prohlížeče nebyl v tomto běhu proveden.
