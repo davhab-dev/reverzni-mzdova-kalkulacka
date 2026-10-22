@@ -1,6 +1,6 @@
 {
   "status": "unknown",
-  "checked_at": "2026-10-22T10:39:26Z",
+  "checked_at": "2026-10-22T10:40:00Z",
   "parameter_year": 2026,
   "check_type": "official_source_and_calculator_code_audit",
   "message": "Nepodařilo se načíst všechny oficiální zdroje; aktuálnost nelze potvrdit.",
@@ -8,7 +8,7 @@
   "errors": [
     {
       "source": "cssz",
-      "message": "HTTP Error 404: Not Found"
+      "message": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www-in.cssz.cz'. (_ssl.c:1010)>"
     }
   ],
   "checks": [
