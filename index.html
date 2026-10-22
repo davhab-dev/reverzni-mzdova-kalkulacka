@@ -53,9 +53,8 @@ label{display:block;font-weight:650;font-size:14px;margin:16px 0 7px}
 .line.total strong{font-size:16px;color:#174ea6}
 .section-title{font-weight:750;margin:0 0 4px;color:var(--blue)}
 .note{font-size:12px;color:var(--muted);line-height:1.5}
-.check-status{display:flex;align-items:flex-start;gap:9px;padding:10px 12px;border:1px solid #c7d8ee;background:#f7faff;border-radius:12px;color:#31547f;font-size:12px;margin:0 0 14px}.check-status .status-icon{font-size:15px;line-height:1.35;flex:0 0 auto}.check-status strong{display:block;font-size:12px;margin-bottom:2px}.check-status p{margin:0;color:#61718a}.check-status[data-state="verified"]{border-color:#b7d9c4;background:#f4fbf6;color:#23633d}.check-status[data-state="new"]{border-color:#e6d4a4;background:#fffaf0;color:#765515}.check-status[data-state="unknown"]{border-color:#c7d8ee;background:#f7faff;color:#31547f}
-.update-info{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin:-4px 0 14px;padding:0 2px}
-.update-info .next-check{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:12px}
+.check-status{display:flex;align-items:flex-start;gap:9px;padding:12px;border:1px solid #c7d8ee;background:#f7faff;border-radius:12px;color:#31547f;font-size:12px;margin:0 0 14px}.check-status .status-icon{font-size:15px;line-height:1.35;flex:0 0 auto}.check-status .status-copy{flex:1;min-width:0}.check-status strong{display:block;font-size:12px;margin-bottom:2px}.check-status p{margin:0;color:#61718a}.check-status[data-state="verified"]{border-color:#b7d9c4;background:#f4fbf6;color:#23633d}.check-status[data-state="new"]{border-color:#e6d4a4;background:#fffaf0;color:#765515}.check-status[data-state="unknown"]{border-color:#c7d8ee;background:#f7faff;color:#31547f}
+.check-status .next-check{display:flex;align-items:flex-start;gap:7px;border-top:1px solid currentColor;opacity:.88;margin-top:9px;padding-top:8px;font-size:11px;line-height:1.4}
 footer{text-align:center;font-size:11px;color:var(--muted);padding:16px 4px;border-top:1px solid var(--line);margin-top:12px}
 button:focus-visible,input:focus-visible{outline:3px solid #4b83d0;outline-offset:2px}
 @media (prefers-color-scheme:dark){:root{color-scheme:dark;--ink:#e8efff;--muted:#aab9d2;--blue:#79adff;--blue-dark:#b5d1ff;--paper:#101a2a;--line:#2b3c57;--white:#17243a}header{background:linear-gradient(135deg,#10264a,#174ea6 68%,#235d9f);color:#fff;border-bottom-color:#79adff}header p{color:#dbe8ff}.card{box-shadow:0 4px 16px #00000018}.tabs{background:#202f47}.tabs button.active{background:#245aa8;color:#fff}.money{background:#17243a;border-color:#425776}.money input{background:transparent;color:#f2f6ff}.money span{color:#9fc4ff}.select-wrap select{background:#17243a;border-color:#425776;color:var(--ink)}.result{background:linear-gradient(135deg,#103675,#174ea6 72%,#235d9f);border-color:#3b5f91;box-shadow:0 8px 22px #00000030}.result .caption{color:#e0ebff}.result .amount{color:#fff}.result .sub{color:#e0ebff}.breakdown-heading{color:#9fc4ff}.line.total{background:#1d3557;border-color:#45658e}.line.total strong{color:#d7e6ff}.line strong{color:#c8dcff}.line:nth-child(2) strong,.line:nth-child(3) strong{color:#8bb8f4}.options-title,.section-title{color:#e8efff}.option-group{background:#142239;border-color:#354a69}.option-group-title{color:#9fc4ff}.option-help{color:#aab9d2}.check .check-help{color:#aab9d2}footer{border-color:var(--line)}.check-status{background:#172b45;border-color:#425776;color:#dbe8ff}.check-status p{color:#aab9d2}.check-status[data-state="verified"]{background:#183329;border-color:#35684c;color:#b9e6c9}.check-status[data-state="new"]{background:#3a3020;border-color:#6b5830;color:#f0d99c}.check-status[data-state="unknown"]{background:#172b45;border-color:#425776;color:#dbe8ff}}
@@ -70,10 +69,11 @@ button:focus-visible,input:focus-visible{outline:3px solid #4b83d0;outline-offse
 </header>
 <div class="check-status" id="dataStatus" data-state="unknown" role="status" aria-live="polite">
   <span class="status-icon" aria-hidden="true">ⓘ</span>
-  <div><strong>Aktuálnost mzdových parametrů nebyla ověřena</strong><p>Nelze potvrdit, zda kalkulačka používá nejnovější platná pravidla.</p></div>
-</div>
-<div class="update-info">
-  <div class="next-check"><span aria-hidden="true">◷</span><span><strong>Další automatická kontrola oficiálních zdrojů mzdových parametrů:</strong> každé pondělí ráno</span></div>
+  <div class="status-copy">
+    <strong>Aktuálnost mzdových parametrů nebyla ověřena</strong>
+    <p>Nelze potvrdit, zda kalkulačka používá nejnovější platná pravidla.</p>
+    <div class="next-check"><span aria-hidden="true">◷</span><span>Další automatická kontrola oficiálních zdrojů: každé pondělí ráno</span></div>
+  </div>
 </div>
 <section class="card">
 <div class="tabs" role="tablist" aria-label="Směr výpočtu">
