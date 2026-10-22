@@ -21,7 +21,7 @@ INDEX_PATH = ROOT / "index.html"
 SOURCES = {
     "financni_sprava": "https://financnisprava.gov.cz/cs/dane/dane/dan-z-prijmu/zamestnanci-zamestnavatele/obecne-informace",
     "financni_sprava_qa": "https://financnisprava.gov.cz/cs/dane/dane/dan-z-prijmu/zamestnanci-zamestnavatele/dotazy-a-odpovedi/2026/aktualni-dotazy-a-odpovedi-k-dani-z",
-    "cssz": "https://www.cssz.cz/sazby-pojistneho",
+    "cssz": "https://www.cssz.cz/web/cz/sazby-pojistneho",
     "vzp": "https://www.vzp.cz/platci/informace/zamestnavatel/vymerovaci-zaklad-a-vypocet-pojistneho",
 }
 
