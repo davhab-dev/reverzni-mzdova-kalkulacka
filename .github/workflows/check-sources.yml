@@ -1,6 +1,10 @@
 name: Kontrola oficiálních zdrojů
 
 on:
+  push:
+    paths:
+      - 'scripts/check_sources.py'
+      - '.github/workflows/check-sources.yml'
   schedule:
     - cron: "17 6 * * *"
   workflow_dispatch:
