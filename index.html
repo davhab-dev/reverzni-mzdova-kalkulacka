@@ -16,7 +16,7 @@ main{max-width:560px;margin:0 auto;padding:22px 16px 36px}
 header{background:linear-gradient(135deg,#103675,#2563b8 68%,#6b9fe8);color:white;padding:24px 22px;border-radius:22px;margin-bottom:18px;border-bottom:5px solid #72d99a}
 
 .kicker{text-transform:uppercase;letter-spacing:.12em;font-size:11px;opacity:.86;font-weight:700}
-h1.page-title{display:block;width:100%;font-size:52px;line-height:1.08;letter-spacing:-.045em;white-space:nowrap;margin:8px 0;color:#72d99a}header p{margin:8px 0 0;color:#e1ecff;font-size:14px}
+h1.page-title{display:block;width:100%;font-size:clamp(18px,4.8vw,27px);line-height:1.15;letter-spacing:-.035em;white-space:nowrap;margin:8px 0;color:#72d99a}header p{margin:8px 0 0;color:#e1ecff;font-size:14px}
 .card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:18px;margin:12px 0;box-shadow:0 4px 16px #153b7210}
 .tabs{display:grid;grid-template-columns:1fr 1fr;background:#e8eef8;border-radius:12px;padding:4px;gap:4px}
 .tabs button{border:0;border-radius:9px;padding:12px 6px;background:transparent;color:var(--muted);font-weight:700;font-size:14px;letter-spacing:0;line-height:1.3;cursor:pointer}
@@ -172,7 +172,7 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid 
 <script>
 (() => {
  const $ = id => document.getElementById(id);
- function fitTitle(){const el=document.querySelector('.page-title');if(!el||window.matchMedia('print').matches)return;const available=el.parentElement.clientWidth;if(available<=0)return;const style=getComputedStyle(el);const canvas=document.createElement('canvas');const ctx=canvas.getContext('2d');if(!ctx)return;const text=el.textContent.trim();const spacing=parseFloat(style.letterSpacing)||0;let low=12,high=52,best=12;for(let i=0;i<18;i++){const size=(low+high)/2;ctx.font=style.fontWeight+' '+size+'px '+style.fontFamily;const measured=ctx.measureText(text).width+Math.max(0,text.length-1)*spacing;if(measured<=available){best=size;low=size;}else{high=size;}}el.style.fontSize=best.toFixed(2)+'px';}
+ function fitTitle(){const el=document.querySelector('.page-title');if(!el||window.matchMedia('print').matches)return;el.style.fontSize='';const available=el.parentElement.clientWidth;if(available<=0)return;const style=getComputedStyle(el);const base=parseFloat(style.fontSize)||24;const canvas=document.createElement('canvas');const ctx=canvas.getContext('2d');if(!ctx)return;const text=el.textContent.trim();ctx.font=style.fontWeight+' '+base+'px '+style.fontFamily;const measured=ctx.measureText(text).width;const spacing=parseFloat(style.letterSpacing)||0;const total=measured+Math.max(0,text.length-1)*spacing;if(total>available)el.style.fontSize=Math.max(15,base*available/total*0.94).toFixed(2)+'px';}
  window.addEventListener('resize',fitTitle,{passive:true});if('ResizeObserver'in window){new ResizeObserver(fitTitle).observe(document.querySelector('header'));}fitTitle();
  let mode = 'gross';
  const fmt = n => { const rounded=Math.round(n); return (Object.is(rounded,-0)||rounded===0?0:rounded).toLocaleString('cs-CZ') + ' Kč'; };
