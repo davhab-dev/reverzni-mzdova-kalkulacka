@@ -14,10 +14,6 @@
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.45 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 main{max-width:560px;margin:0 auto;padding:22px 16px 36px}
 header{background:linear-gradient(135deg,#103675,#2563b8 68%,#6b9fe8);color:white;padding:24px 22px;border-radius:22px;margin-bottom:18px;border-bottom:5px solid #72d99a}
-.header-brand{display:flex;align-items:center;gap:16px}
-.header-copy{min-width:0;flex:1}
-.coin-icon{display:block;width:92px;height:92px;flex:0 0 92px;object-fit:contain;border-radius:50%;background:#fff}
-@media(max-width:420px){header{padding:18px 14px}.header-brand{gap:10px}.coin-icon{width:64px;height:64px;flex-basis:64px}h1{font-size:22px}}
 
 .kicker{text-transform:uppercase;letter-spacing:.12em;font-size:11px;opacity:.86;font-weight:700}
 h1{font-size:27px;line-height:1.15;margin:8px 0;color:#72d99a}header p{margin:8px 0 0;color:#e1ecff;font-size:14px}
@@ -75,9 +71,6 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid 
   html,body{width:auto!important;min-width:0!important;margin:0!important;padding:0!important;background:#fff!important;color:#172b4d!important;font-size:8.5pt!important}
   main{max-width:none;margin:0;padding:0}
   header{background:#fff!important;color:#172b4d!important;border:0;border-bottom:1px solid #72d99a;border-radius:0;padding:0 0 4px;margin:0 0 5px;box-shadow:none}
-  .coin-icon{width:58px;height:58px;flex-basis:58px}
-  .header-brand{gap:10px}
-
   header .kicker{color:#61718a;font-size:8pt}
   header h1{font-size:15pt;color:#174ea6!important;margin:2px 0}
   header p{color:#61718a!important;font-size:8pt;margin:2px 0}
@@ -108,14 +101,9 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid 
 <body>
 <main>
 <header>
-<div class="header-brand">
-<img class="coin-icon" src="data:image/jpeg;base64,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" alt="Originální kresba české jednokorunové mince" />
-<div class="header-copy">
 <div class="kicker">Česká republika · 2026</div>
 <h1>Reverzní mzdová kalkulačka</h1>
 <p>Zjistěte hrubou mzdu z čisté nebo čistou z hrubé.</p>
-</div>
-</div>
 </header>
 <div class="check-status" id="dataStatus" data-state="unknown" role="status" aria-live="polite">
   <span class="status-icon" aria-hidden="true">ⓘ</span>
