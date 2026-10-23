@@ -14,6 +14,11 @@
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.45 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 main{max-width:560px;margin:0 auto;padding:22px 16px 36px}
 header{background:linear-gradient(135deg,#103675,#2563b8 68%,#6b9fe8);color:white;padding:24px 22px;border-radius:22px;margin-bottom:18px;border-bottom:5px solid #72d99a}
+.header-brand{display:flex;align-items:center;gap:16px}
+.header-copy{min-width:0;flex:1}
+.coin-icon{display:block;width:104px;height:104px;flex:0 0 104px;background:#f8f8f3;border-radius:50%;padding:2px}
+@media(max-width:420px){header{padding:18px 14px}.header-brand{gap:10px}.coin-icon{width:78px;height:78px;flex-basis:78px}h1{font-size:22px}}
+
 .kicker{text-transform:uppercase;letter-spacing:.12em;font-size:11px;opacity:.86;font-weight:700}
 h1{font-size:27px;line-height:1.15;margin:8px 0;color:#72d99a}header p{margin:8px 0 0;color:#e1ecff;font-size:14px}
 .card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:18px;margin:12px 0;box-shadow:0 4px 16px #153b7210}
@@ -70,6 +75,9 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid 
   html,body{width:auto!important;min-width:0!important;margin:0!important;padding:0!important;background:#fff!important;color:#172b4d!important;font-size:8.5pt!important}
   main{max-width:none;margin:0;padding:0}
   header{background:#fff!important;color:#172b4d!important;border:0;border-bottom:1px solid #72d99a;border-radius:0;padding:0 0 4px;margin:0 0 5px;box-shadow:none}
+  .coin-icon{width:58px;height:58px;flex-basis:58px}
+  .header-brand{gap:10px}
+
   header .kicker{color:#61718a;font-size:8pt}
   header h1{font-size:15pt;color:#174ea6!important;margin:2px 0}
   header p{color:#61718a!important;font-size:8pt;margin:2px 0}
@@ -100,9 +108,24 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid 
 <body>
 <main>
 <header>
+<div class="header-brand">
+<svg class="coin-icon" viewBox="0 0 160 160" role="img" aria-label="Stylizovaná česká jednokorunová mince" xmlns="http://www.w3.org/2000/svg">
+<circle cx="80" cy="80" r="75" fill="#f8f8f3" stroke="#172b4d" stroke-width="2.5"/>
+<circle cx="80" cy="80" r="68" fill="none" stroke="#172b4d" stroke-width="1.3"/>
+<circle cx="80" cy="80" r="72" fill="none" stroke="#172b4d" stroke-width=".7"/>
+<text x="80" y="30" text-anchor="middle" font-family="Georgia,serif" font-size="9" letter-spacing="2.2" fill="#172b4d">KORUNA ČESKÁ</text>
+<text x="80" y="84" text-anchor="middle" font-family="Georgia,serif" font-weight="bold" font-size="77" fill="#f8f8f3" stroke="#172b4d" stroke-width="1.5" paint-order="stroke">1</text>
+<path d="M42 119 L42 91 Q42 84 49 87 L57 92 L57 79 Q57 71 64 77 L73 85 Q80 77 87 85 L96 77 Q103 71 103 79 L103 92 L111 87 Q118 84 118 91 L118 119 Z" fill="#f8f8f3" stroke="#172b4d" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M51 107 Q62 99 70 109 Q80 119 90 109 Q99 99 109 107" fill="none" stroke="#172b4d" stroke-width="2"/>
+<circle cx="80" cy="101" r="4" fill="#f8f8f3" stroke="#172b4d" stroke-width="1.6"/>
+<text x="80" y="137" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#172b4d">ČM</text>
+</svg>
+<div class="header-copy">
 <div class="kicker">Česká republika · 2026</div>
 <h1>Reverzní mzdová kalkulačka</h1>
 <p>Zjistěte hrubou mzdu z čisté nebo čistou z hrubé.</p>
+</div>
+</div>
 </header>
 <div class="check-status" id="dataStatus" data-state="unknown" role="status" aria-live="polite">
   <span class="status-icon" aria-hidden="true">ⓘ</span>
