@@ -16,7 +16,7 @@ main{max-width:560px;margin:0 auto;padding:22px 16px 36px}
 header{background:linear-gradient(135deg,#103675,#2563b8 68%,#6b9fe8);color:white;padding:24px 22px;border-radius:22px;margin-bottom:18px;border-bottom:5px solid #72d99a}
 
 .kicker{text-transform:uppercase;letter-spacing:.12em;font-size:11px;opacity:.86;font-weight:700}
-h1{font-size:clamp(15px,4.3vw,24px);line-height:1.2;letter-spacing:-.045em;white-space:nowrap;margin:8px 0;color:#72d99a}header p{margin:8px 0 0;color:#e1ecff;font-size:14px}
+h1.page-title{display:block;width:100%;font-size:52px;line-height:1.08;letter-spacing:-.045em;white-space:nowrap;margin:8px 0;color:#72d99a}header p{margin:8px 0 0;color:#e1ecff;font-size:14px}
 .card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:18px;margin:12px 0;box-shadow:0 4px 16px #153b7210}
 .tabs{display:grid;grid-template-columns:1fr 1fr;background:#e8eef8;border-radius:12px;padding:4px;gap:4px}
 .tabs button{border:0;border-radius:9px;padding:12px 6px;background:transparent;color:var(--muted);font-weight:700;font-size:14px;letter-spacing:0;line-height:1.3;cursor:pointer}
@@ -68,8 +68,6 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid 
 /* Název se dynamicky zvětší tak, aby vyplnil šířku hlavičky na jednom řádku. */
 /* Keep the complete heading inside the header on narrow screens. */
 .page-title{display:block;box-sizing:border-box;width:100%;max-width:100%;white-space:nowrap;font-size:clamp(14px,3.3vw,27px);line-height:1.15;letter-spacing:-.055em}
-@media(max-width:600px){.page-title{font-size:clamp(14px,3.3vw,24px);letter-spacing:-.065em}}
-@media(max-width:380px){.page-title{font-size:clamp(13px,3.3vw,18px);letter-spacing:-.07em}}
 @media print{.page-title{font-size:16pt!important;letter-spacing:0!important}}
 @media print{
   @page{size:A4 portrait;margin:7mm}
@@ -109,7 +107,7 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid 
 <main>
 <header>
 <div class="kicker">Česká republika · 2026</div>
-<h1 class="page-title">Reverzní kalkulačka mzdy</h1>
+<h1 class="page-title">Reverzní mzdová kalkulačka</h1>
 <p>Zjistěte hrubou mzdu z čisté nebo čistou z hrubé.</p>
 </header>
 <div class="check-status" id="dataStatus" data-state="unknown" role="status" aria-live="polite">
@@ -174,7 +172,7 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid 
 <script>
 (() => {
  const $ = id => document.getElementById(id);
- function fitTitle(){const el=document.querySelector('.page-title');if(!el||window.matchMedia('print').matches)return;el.style.fontSize='';const available=el.parentElement.clientWidth;const style=getComputedStyle(el);const current=parseFloat(style.fontSize)||27;const canvas=document.createElement('canvas');const ctx=canvas.getContext('2d');if(!ctx||available<=0)return;ctx.font=style.fontWeight+' '+current+'px '+style.fontFamily;const natural=ctx.measureText(el.textContent.trim()).width;const spacing=parseFloat(style.letterSpacing)||0;const measured=natural+Math.max(0,el.textContent.trim().length-1)*spacing;if(measured>0)el.style.fontSize=(current*available/measured*0.98)+'px';}
+ function fitTitle(){const el=document.querySelector('.page-title');if(!el||window.matchMedia('print').matches)return;const available=el.parentElement.clientWidth;if(available<=0)return;const style=getComputedStyle(el);const canvas=document.createElement('canvas');const ctx=canvas.getContext('2d');if(!ctx)return;const text=el.textContent.trim();const spacing=parseFloat(style.letterSpacing)||0;let low=12,high=52,best=12;for(let i=0;i<18;i++){const size=(low+high)/2;ctx.font=style.fontWeight+' '+size+'px '+style.fontFamily;const measured=ctx.measureText(text).width+Math.max(0,text.length-1)*spacing;if(measured<=available){best=size;low=size;}else{high=size;}}el.style.fontSize=best.toFixed(2)+'px';}
  window.addEventListener('resize',fitTitle,{passive:true});if('ResizeObserver'in window){new ResizeObserver(fitTitle).observe(document.querySelector('header'));}fitTitle();
  let mode = 'gross';
  const fmt = n => { const rounded=Math.round(n); return (Object.is(rounded,-0)||rounded===0?0:rounded).toLocaleString('cs-CZ') + ' Kč'; };
