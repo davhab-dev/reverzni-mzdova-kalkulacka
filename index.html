@@ -171,7 +171,7 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid 
 <script>
 (() => {
  const $ = id => document.getElementById(id);
- function fitTitle(){const el=document.querySelector('.page-title');if(!el||window.matchMedia('print').matches)return;el.style.fontSize='';const available=el.parentElement.clientWidth;const natural=el.scrollWidth;const current=parseFloat(getComputedStyle(el).fontSize)||27;if(natural>0&&available>0)el.style.fontSize=(current*Math.min(available/natural,2)*0.99)+'px';}
+ function fitTitle(){const el=document.querySelector('.page-title');if(!el||window.matchMedia('print').matches)return;el.style.fontSize='';const available=el.parentElement.clientWidth;const style=getComputedStyle(el);const current=parseFloat(style.fontSize)||27;const canvas=document.createElement('canvas');const ctx=canvas.getContext('2d');if(!ctx||available<=0)return;ctx.font=style.fontWeight+' '+current+'px '+style.fontFamily;const natural=ctx.measureText(el.textContent.trim()).width;const spacing=parseFloat(style.letterSpacing)||0;const measured=natural+Math.max(0,el.textContent.trim().length-1)*spacing;if(measured>0)el.style.fontSize=(current*available/measured*0.98)+'px';}
  window.addEventListener('resize',fitTitle,{passive:true});if('ResizeObserver'in window){new ResizeObserver(fitTitle).observe(document.querySelector('header'));}fitTitle();
  let mode = 'gross';
  const fmt = n => { const rounded=Math.round(n); return (Object.is(rounded,-0)||rounded===0?0:rounded).toLocaleString('cs-CZ') + ' Kč'; };
