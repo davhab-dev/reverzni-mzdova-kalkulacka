@@ -1,25 +1,25 @@
 {
-  "checked_at": "2026-10-26T07:07:29Z",
+  "checked_at": "2026-10-27T07:04:03Z",
   "sources": {
     "financni_sprava": {
       "url": "https://financnisprava.gov.cz/cs/dane/dane/dan-z-prijmu/zamestnanci-zamestnavatele/obecne-informace",
       "sha256": "c5698666c45bb8185e5dfbfc9603d034cd9ccfbb27cf039e51406266bd826e65",
-      "checked_at": "2026-10-26T07:07:29Z"
+      "checked_at": "2026-10-27T07:04:03Z"
     },
     "financni_sprava_qa": {
       "url": "https://financnisprava.gov.cz/cs/dane/dane/dan-z-prijmu/zamestnanci-zamestnavatele/dotazy-a-odpovedi/2026/aktualni-dotazy-a-odpovedi-k-dani-z",
       "sha256": "7b56c3ec58fde2809b9fb79392a8594c6d67e8819f737bb1fd5c3a82bee03ac6",
-      "checked_at": "2026-10-26T07:07:29Z"
+      "checked_at": "2026-10-27T07:04:03Z"
     },
     "cssz": {
       "url": "https://www.cssz.cz/documents/20143/2872693/TZ__P%C5%99ehled%20nejd%C5%AFle%C5%BEit%C4%9Bj%C5%A1%C3%ADch%20%C3%BAdaj%C5%AF%20pro%20soci%C3%A1ln%C3%AD%20zabezpe%C4%8Den%C3%AD%20v%20roce%202026.pdf/3c0800f6-15d0-a4df-8a9e-35b93969b355",
       "sha256": "71f6733eef5e3da0af9973e1099ac726208b08dbe441122e30140cc1443d7967",
-      "checked_at": "2026-10-26T07:07:29Z"
+      "checked_at": "2026-10-27T07:04:03Z"
     },
     "vzp": {
       "url": "https://www.vzp.cz/platci/informace/zamestnavatel/vymerovaci-zaklad-a-vypocet-pojistneho",
       "sha256": "f9bbe31fc8f1d196fb067519fbbbba86420d2625bcee2d46eb1abe1c99c8b7ad",
-      "checked_at": "2026-10-26T07:07:29Z"
+      "checked_at": "2026-10-27T07:04:03Z"
     }
   }
 }
