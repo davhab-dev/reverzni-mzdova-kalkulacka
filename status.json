@@ -1,11 +1,16 @@
 {
-  "status": "verified",
-  "checked_at": "2026-11-09T07:43:13Z",
+  "status": "unknown",
+  "checked_at": "2026-11-10T07:28:00Z",
   "parameter_year": 2026,
   "check_type": "official_source_and_calculator_code_audit",
-  "message": "Všechny kontrolované hodnoty i sledované části implementace odpovídají pravidlům nalezeným na oficiálních zdrojích.",
+  "message": "Nepodařilo se načíst všechny oficiální zdroje; aktuálnost nelze potvrdit.",
   "changed_sources": [],
-  "errors": [],
+  "errors": [
+    {
+      "source": "vzp",
+      "message": "The read operation timed out"
+    }
+  ],
   "checks": [
     {
       "parameter": "employee social insurance 7.1%",
@@ -15,7 +20,7 @@
     {
       "parameter": "employee health insurance rate 4.5% (one third of 13.5%)",
       "source": "vzp",
-      "matched": true
+      "matched": false
     },
     {
       "parameter": "taxpayer credit 30,840 CZK/year",
@@ -45,12 +50,12 @@
     {
       "parameter": "minimum wage / health minimum base 22,400 CZK",
       "source": "vzp",
-      "matched": true
+      "matched": false
     },
     {
       "parameter": "health minimum premium 3,024 CZK",
       "source": "vzp",
-      "matched": true
+      "matched": false
     },
     {
       "parameter": "15%/23% tax threshold 146,901 CZK/month",
@@ -123,8 +128,12 @@
       "matched": true
     }
   ],
-  "failed_parameters": [],
-  "review_required": false,
+  "failed_parameters": [
+    "employee health insurance rate 4.5% (one third of 13.5%)",
+    "minimum wage / health minimum base 22,400 CZK",
+    "health minimum premium 3,024 CZK"
+  ],
+  "review_required": true,
   "automatic_parameter_updates": false,
   "automatic_update_policy": "Legal constants are never rewritten from loosely matched web text; source drift fails closed to manual review."
 }
