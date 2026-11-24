@@ -1,6 +1,6 @@
 {
   "status": "verified",
-  "checked_at": "2026-11-23T18:19:00Z",
+  "checked_at": "2026-11-24T17:51:22Z",
   "parameter_year": 2026,
   "check_type": "official_source_and_calculator_code_audit",
   "message": "Všechny kontrolované hodnoty i sledované části implementace odpovídají pravidlům nalezeným na oficiálních zdrojích.",
