@@ -22,9 +22,9 @@ function extractFunction(name) {
 }
 
 const production = new Function(
-  extractFunction('childCredit') + '\\n' +
-  extractFunction('calc') + '\\n' +
-  extractFunction('reverse') + '\\n' +
+  extractFunction('childCredit') + '\n' +
+  extractFunction('calc') + '\n' +
+  extractFunction('reverse') + '\n' +
   'return { childCredit, calc, reverse };'
 )();
 
