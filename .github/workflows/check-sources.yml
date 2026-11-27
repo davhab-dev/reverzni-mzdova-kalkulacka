@@ -3,7 +3,9 @@ name: Kontrola oficiálních zdrojů
 on:
   push:
     paths:
+      - 'index.html'
       - 'scripts/check_sources.py'
+      - 'tests/**'
       - '.github/workflows/check-sources.yml'
   schedule:
     - cron: "17 6 * * *"
@@ -28,11 +30,19 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Nastav Node.js pro regresní testy
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
       - name: Nainstaluj nástroj pro čtení PDF
         run: sudo apt-get update && sudo apt-get install -y poppler-utils
 
       - name: Ověř syntaxi kontrolního skriptu
         run: python -m py_compile scripts/check_sources.py
+
+      - name: Spusť regresní testy kalkulačky
+        run: node --test tests/calculator.test.cjs
 
       - name: Zkontroluj oficiální zdroje
         run: python scripts/check_sources.py
