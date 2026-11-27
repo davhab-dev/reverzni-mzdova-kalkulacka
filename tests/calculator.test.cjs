@@ -22,7 +22,7 @@ function extractFunction(name) {
 }
 
 const production = new Function(
-  'const MAX_AMOUNT=100000000;\\n' +
+  'const MAX_AMOUNT=100000000;\n' +
   extractFunction('childCredit') + '\n' +
   extractFunction('calc') + '\n' +
   extractFunction('reverse') + '\n' +
