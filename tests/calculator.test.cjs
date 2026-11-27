@@ -81,3 +81,15 @@ test('reverse calculation rejects non-finite and unsupported targets', () => {
   assert.equal(production.reverse(Infinity, standard), null);
   assert.equal(production.reverse(100000001, standard), null);
 });
+
+test('UI rejects unsupported amounts before reverse calculation', () => {
+  assert.match(html, /id="amount"[^>]*max="100000000"/);
+  assert.match(html, /if\(raw>MAX_AMOUNT\)/);
+  assert.match(html, /const MAX_AMOUNT=100000000/);
+});
+
+test('source audit fails closed when calendar year exceeds audited constants', () => {
+  const checker = fs.readFileSync(new URL('../scripts/check_sources.py', 'file://' + __filename), 'utf8');
+  assert.match(checker, /if year != 2026:/);
+  assert.match(checker, /parameter set is for 2026/);
+});
