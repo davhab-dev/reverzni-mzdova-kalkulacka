@@ -232,8 +232,10 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid 
    };
    const checkedAt=status.checked_at ? new Date(status.checked_at) : null;
    const validDate=checkedAt && !Number.isNaN(checkedAt.getTime());
-   const stale=!validDate || (Date.now()-checkedAt.getTime()>7*24*60*60*1000) || Number(status.parameter_year)!==new Date().getFullYear();
-   const baseState=labels[status.status] ? status.status : 'unknown';
+   const now=Date.now();
+   const stale=!validDate || checkedAt.getTime()>now+5*60*1000 || (now-checkedAt.getTime()>7*24*60*60*1000) || Number(status.parameter_year)!==new Date().getFullYear();
+   const statusConsistent=status.status!=='verified' || (status.review_required!==true && (!Array.isArray(status.failed_parameters)||status.failed_parameters.length===0) && (!Array.isArray(status.errors)||status.errors.length===0));
+   const baseState=statusConsistent && labels[status.status] ? status.status : 'review';
    const s=stale ? 'stale' : baseState,v=stale
     ? ['!','Kontrola oficiálních zdrojů je zastaralá','Poslední kontrola je starší než 7 dní, datum chybí nebo neodpovídá aktuálnímu roku. Stav parametrů proto nelze považovat za aktuální.']
     : labels[baseState];
