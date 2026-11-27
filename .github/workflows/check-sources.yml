@@ -48,6 +48,7 @@ jobs:
         run: python scripts/check_sources.py
 
       - name: Ulož výsledek kontroly
+        if: github.ref == 'refs/heads/main'
         run: |
           if [[ -n "$(git status --porcelain status.json source_snapshot.json)" ]]; then
             git config user.name "github-actions[bot]"
