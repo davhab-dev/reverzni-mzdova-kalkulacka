@@ -154,13 +154,20 @@ def main():
         if not ok:
             print(f"REVIEW REQUIRED: calculator code does not match audited rule: {label}")
 
+    # The audited constants and UI labels are explicitly for tax year 2026.
+    # Never let a dynamic calendar year make an old parameter set look verified.
+    if year != 2026:
+        checks.append({"parameter": f"calculator constants reviewed for tax year {year}",
+                       "source": "index.html", "matched": False})
+        print(f"REVIEW REQUIRED: parameter set is for 2026, not {year}")
+
     failed = [item["parameter"] for item in checks if not item["matched"]]
     if errors:
         state = "unknown"
         message = "Nepodařilo se načíst všechny oficiální zdroje; aktuálnost nelze potvrdit."
     elif failed:
         state = "review"
-        message = "Některé parametry nebo části výpočtu nebylo možné potvrdit. Kalkulačka nebyla automaticky změněna; je nutná kontrola."
+        message = ("Kalkulačka obsahuje parametry pro rok 2026; před použitím v novém roce je nutná aktualizace a kontrola." if year != 2026 else "Některé parametry nebo části výpočtu nebylo možné potvrdit. Kalkulačka nebyla automaticky změněna; je nutná kontrola.")
     else:
         state = "verified"
         message = "Všechny kontrolované hodnoty i sledované části implementace odpovídají pravidlům nalezeným na oficiálních zdrojích."
